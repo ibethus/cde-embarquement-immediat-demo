@@ -1,0 +1,16 @@
+* Montrer la partie configuration
+* Authentification à l'API rest
+* Front qui se connecte à cette API
+* Connexion à la BDD
+
+Objectifs :
+* Montrer que l'on a des configs différentes pour chaque environnement (dev, intégration)
+* On peut avoir des configuration par profil de développeur (back, front, fullstack)
+
+A prévoir :
+* Des bouchons (bdd + service externe)
+* Un back
+* Un front
+* Des données "réelles" (bdd + service externe)
+* Un keycloak
+* En option : un pipeline github actions

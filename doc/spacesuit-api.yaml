@@ -1,0 +1,186 @@
+openapi: 3.0.0
+info:
+  title: API de Gestion des Statuts de Combinaisons Spatiales
+  version: 1.0.0
+  description: Interface pour gérer l'état et le statut des combinaisons spatiales
+
+paths:
+  /spacesuits:
+    get:
+      summary: Récupérer la liste des combinaisons
+      responses:
+        '200':
+          description: Liste des combinaisons récupérée avec succès
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Spacesuit'
+    post:
+      summary: Créer une nouvelle combinaison
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SpacesuitInput'
+      responses:
+        '201':
+          description: Combinaison créée avec succès
+
+  /spacesuits/{id}:
+    get:
+      summary: Récupérer une combinaison par son ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Combinaison trouvée
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Spacesuit'
+    put:
+      summary: Mettre à jour le statut d'une combinaison
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SpacesuitUpdate'
+      responses:
+        '200':
+          description: Combinaison mise à jour avec succès
+    delete:
+      summary: Supprimer une combinaison
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Combinaison supprimée avec succès
+
+  /spacesuits/{id}/validate:
+    post:
+      summary: Valider qu'une combinaison est prête pour une sortie extérieure
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Combinaison validée et prête pour la sortie
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  isValid:
+                    type: boolean
+                  message:
+                    type: string
+        '400':
+          description: La combinaison n'est pas en état pour une sortie
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  isValid:
+                    type: boolean
+                  message:
+                    type: string
+
+components:
+  schemas:
+    Spacesuit:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        serialNumber:
+          type: string
+        status:
+          type: string
+          enum: [OPERATIONNEL, EN_MAINTENANCE, HORS_SERVICE]
+        oxygenLevel:
+          type: number
+          format: float
+          minimum: 0
+          maximum: 100
+        batteryLevel:
+          type: number
+          format: float
+          minimum: 0
+          maximum: 100
+        temperatureRange:
+          type: object
+          properties:
+            min:
+              type: number
+              format: float
+              description: Température minimale supportée en Celsius
+            max:
+              type: number
+              format: float
+              description: Température maximale supportée en Celsius
+        lastMaintenanceDate:
+          type: string
+          format: date-time
+        nextMaintenanceDate:
+          type: string
+          format: date-time
+
+    SpacesuitInput:
+      type: object
+      required:
+        - serialNumber
+        - status
+      properties:
+        serialNumber:
+          type: string
+        status:
+          type: string
+          enum: [OPERATIONNEL, EN_MAINTENANCE, HORS_SERVICE]
+        oxygenLevel:
+          type: number
+          format: float
+        batteryLevel:
+          type: number
+          format: float
+
+    SpacesuitUpdate:
+      type: object
+      properties:
+        status:
+          type: string
+          enum: [OPERATIONNEL, EN_MAINTENANCE, HORS_SERVICE]
+        oxygenLevel:
+          type: number
+          format: float
+        batteryLevel:
+          type: number
+          format: float
+        lastMaintenanceDate:
+          type: string
+          format: date-time
+        nextMaintenanceDate:
+          type: string
+          format: date-time
