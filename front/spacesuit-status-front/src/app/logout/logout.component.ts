@@ -12,6 +12,5 @@ export class LogoutComponent {
   constructor(Keycloak: Keycloak, Router: Router) {
     Keycloak.logout();
     Router.navigate(['/']);
-    
   }
 }

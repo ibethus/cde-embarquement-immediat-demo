@@ -16,7 +16,6 @@ const isAccessAllowed = async (
 ): Promise<boolean | UrlTree> => {
   const { authenticated, grantedRoles } = authData;
   const keycloackService = inject(Keycloak);
-  debugger;
   if (!authenticated) {
     await keycloackService.login(
       {

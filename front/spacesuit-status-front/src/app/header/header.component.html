@@ -1,0 +1,24 @@
+<mat-toolbar class="header">
+  <div class="logo-container">
+    <a mat-button routerLink="/" routerLinkActive="active">
+      <mat-icon class="space-icon">rocket</mat-icon>
+      <span class="app-title">SpaceSuit Manager</span>
+    </a>
+  </div>
+
+  <nav class="nav-links">
+    <a
+      mat-button
+      routerLink="/"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+    >
+      <mat-icon>home</mat-icon>
+      Accueil
+    </a>
+    <a *kaHasRoles="['astronaut'], checkRealm: true;" mat-button routerLink="/suits" routerLinkActive="active">
+      <mat-icon>engineering</mat-icon>
+      Combinaisons
+    </a>
+  </nav>
+</mat-toolbar>

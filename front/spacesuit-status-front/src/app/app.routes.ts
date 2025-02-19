@@ -5,6 +5,7 @@ import { WelcomeComponent } from './welcome/welcome.component';
 import { ForbiddenComponent } from './forbidden/forbidden.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { LogoutComponent } from './logout/logout.component';
+import { LoginComponent } from './login/login.component';
 
 export const routes: Routes = [
   {
@@ -19,5 +20,11 @@ export const routes: Routes = [
   },
   { path: 'forbidden', component: ForbiddenComponent },
   { path: 'logout', component: LogoutComponent },
-  { path: '**', component: NotFoundComponent }
+  {
+    path: 'login',
+    component: LoginComponent,
+    canActivate: [canActivateAuthRole],
+    data: { role: 'astronaut' },
+  },
+  { path: '**', component: NotFoundComponent },
 ];
