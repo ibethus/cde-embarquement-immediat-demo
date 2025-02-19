@@ -15,6 +15,7 @@ export const routes: Routes = [
     path: 'suits',
     component: SuitsComponent,
     canActivate: [canActivateAuthRole],
+    data: { role: 'astronaut' },
   },
   { path: 'forbidden', component: ForbiddenComponent },
   { path: 'logout', component: LogoutComponent },
