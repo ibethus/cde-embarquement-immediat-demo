@@ -1,0 +1,69 @@
+@use "@angular/material" as mat;
+
+h1 {
+  text-align: center;
+  color: var(--mat-sys-primary);
+}
+
+.status-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.status-indicator {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.status-operational {
+  background-color: #4caf50; // vert
+}
+
+.status-maintenance {
+  background-color: #ff9800; // orange
+}
+
+.status-outoforder {
+  background-color: #f44336; // rouge
+}
+.battery-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 150px;
+}
+
+.battery-text {
+  min-width: 45px;
+}
+
+// Définition des overrides pour les différents états
+.critical {
+  @include mat.progress-bar-overrides(
+    (
+      active-indicator-color: #f44336,
+      // rouge
+    )
+  );
+}
+
+.warning {
+  @include mat.progress-bar-overrides(
+    (
+      active-indicator-color: #ff9800,
+      // orange
+    )
+  );
+}
+
+.ok {
+  @include mat.progress-bar-overrides(
+    (
+      active-indicator-color: #4caf50,
+      // vert
+    )
+  );
+}
