@@ -1,0 +1,60 @@
+<div class="container">
+  <h3>Combinaison #{{ suit().serialNumber }}</h3>
+  <div class="status-container">
+    <span
+      class="status-indicator"
+      [ngClass]="{
+        'status-operational': suit().status === 'OPERATIONNEL',
+        'status-maintenance': suit().status === 'EN_MAINTENANCE',
+        'status-outoforder': suit().status === 'HORS_SERVICE'
+      }"
+    ></span>
+    {{ suit().status }}
+  </div>
+
+  <div class="content-row">
+    <mat-icon>battery_charging_full</mat-icon>
+    <span>Niveau de batterie</span>
+    <mat-progress-bar
+      mode="determinate"
+      [value]="suit().batteryLevel"
+      [class]="
+        suit().batteryLevel < 20
+          ? 'critical'
+          : suit().batteryLevel < 50
+          ? 'warning'
+          : 'ok'
+      "
+    ></mat-progress-bar>
+    <span>{{ suit().batteryLevel }}%</span>
+  </div>
+
+  <mat-divider></mat-divider>
+
+  <div class="content-row">
+    <mat-icon>air</mat-icon>
+    <span>Niveau d'oxygène</span>
+    <mat-progress-bar
+      mode="determinate"
+      [value]="suit().oxygenLevel"
+      [class]="
+        suit().oxygenLevel < 20
+          ? 'critical'
+          : suit().oxygenLevel < 50
+          ? 'warning'
+          : 'ok'
+      "
+    ></mat-progress-bar>
+    <span>{{ suit().oxygenLevel }}%</span>
+  </div>
+
+  <mat-divider></mat-divider>
+
+  <div class="content-row">
+    <mat-icon>thermostat</mat-icon>
+    <span>Température de fonctionnement</span>
+    <span
+      >{{ suit().temperatureRange.min }}°C à
+      {{ suit().temperatureRange.max }}°C</span>
+  </div>
+</div>

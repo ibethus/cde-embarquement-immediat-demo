@@ -11,6 +11,7 @@ import { BoutonOxygenComponent } from '../bouton-oxygen/bouton-oxygen.component'
 import { Suit } from '../model/suit';
 import { SuitStatus } from '../model/suit-status';
 import { SpacesuitApi } from '../service/spacesuit-api';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-suit',
@@ -30,10 +31,11 @@ import { SpacesuitApi } from '../service/spacesuit-api';
   styleUrls: ['./suit.component.scss'],
 })
 export class SuitComponent {
-  constructor(suitService: SpacesuitApi) {
+  constructor(suitService: SpacesuitApi, router: Router) {
     this.suitService = suitService;
+    this.router = router;
   }
-
+  router: Router;
   suitService: SpacesuitApi;
   suit!: WritableSignal<Suit>;
   @Input()
@@ -75,6 +77,8 @@ export class SuitComponent {
     }
   }
   validateMission($event: boolean) {
-    console.log("Let's go on an adventure !");
+    if ($event) {
+      this.router.navigate(['/mission/', this.suit().id]);
+    }
   }
 }

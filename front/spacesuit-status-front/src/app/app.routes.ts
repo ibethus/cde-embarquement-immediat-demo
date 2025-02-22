@@ -7,6 +7,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { LogoutComponent } from './logout/logout.component';
 import { LoginComponent } from './login/login.component';
 import { SuitComponent } from './suits-module/suit/suit.component';
+import { CheckupComponent } from './mission/checkup/checkup.component';
 
 export const routes: Routes = [
   {
@@ -22,6 +23,12 @@ export const routes: Routes = [
   {
     path: 'suits/:suitId',
     component: SuitComponent,
+    canActivate: [canActivateAuthRole],
+    data: { role: 'astronaut' },
+  },
+  {
+    path: 'mission/:suitId',
+    component: CheckupComponent,
     canActivate: [canActivateAuthRole],
     data: { role: 'astronaut' },
   },
