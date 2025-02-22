@@ -1,0 +1,20 @@
+meta {
+  name: Créer une nouvelle combinaison
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{baseUrl}}/spacesuits
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "serialNumber": "BA-665447-00982",
+    "status": "OPERATIONNEL",
+    "oxygenLevel": "100",
+    "batteryLevel": "100"
+  }
+}

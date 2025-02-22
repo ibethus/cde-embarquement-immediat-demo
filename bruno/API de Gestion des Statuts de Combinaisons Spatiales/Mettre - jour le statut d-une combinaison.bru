@@ -1,0 +1,26 @@
+meta {
+  name: Mettre - jour le statut d-une combinaison
+  type: http
+  seq: 4
+}
+
+put {
+  url: {{baseUrl}}/spacesuits/:id
+  body: json
+  auth: none
+}
+
+params:path {
+  id: 777419ee-82be-4a72-918d-12053a0b3d20
+}
+
+body:json {
+  {
+    "status": "OPERATIONNEL",
+    "oxygenLevel": "20",
+    "batteryLevel": "80",
+    "lastMaintenanceDate": "2025-02-22T16:26:58Z",
+    "nextMaintenanceDate": "2025-03-22T16:26:58Z"
+  }
+  
+}
