@@ -23,21 +23,21 @@ export class SpacesuitApi {
     }
 
     // Get a single Suit by ID
-    getById(id: number): Observable<Suit> {
+    getById(id: string): Observable<Suit> {
         return this.http.get<Suit>(`${this.apiURL}/${id}`);
     }
     // Validate that this suit can go on a mission to Mars !
-    validate(id: number): Observable<Suit> {
+    validate(id: string): Observable<Suit> {
         return this.http.post<Suit>(`${this.apiURL}/${id}/validate`, {});
     }
 
     // Update a Suit
-    update(id: number, Suit: Suit): Observable<Suit> {
+    update(id: string, Suit: Suit): Observable<Suit> {
         return this.http.put<Suit>(`${this.apiURL}/${id}`, Suit);
     }
 
     // Delete a Suit
-    delete(id: number): Observable<void> {
+    delete(id: string): Observable<void> {
         return this.http.delete<void>(`${this.apiURL}/${id}`);
     }
 }

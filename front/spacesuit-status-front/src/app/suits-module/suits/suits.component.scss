@@ -19,15 +19,15 @@ h1 {
 }
 
 .status-operational {
-  background-color: #4caf50; // vert
+  background-color: var(--green);
 }
 
 .status-maintenance {
-  background-color: #ff9800; // orange
+  background-color: var(--orange);
 }
 
 .status-outoforder {
-  background-color: #f44336; // rouge
+  background-color: var(--red);
 }
 .battery-container {
   display: flex;
@@ -44,8 +44,7 @@ h1 {
 .critical {
   @include mat.progress-bar-overrides(
     (
-      active-indicator-color: #f44336,
-      // rouge
+      active-indicator-color: var(--red),
     )
   );
 }
@@ -53,8 +52,7 @@ h1 {
 .warning {
   @include mat.progress-bar-overrides(
     (
-      active-indicator-color: #ff9800,
-      // orange
+      active-indicator-color: var(--orange),
     )
   );
 }
@@ -62,8 +60,15 @@ h1 {
 .ok {
   @include mat.progress-bar-overrides(
     (
-      active-indicator-color: #4caf50,
-      // vert
+      active-indicator-color: var(--green),
     )
   );
+}
+
+.clickable-row {
+  cursor: pointer;
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.04);
+  }
 }
