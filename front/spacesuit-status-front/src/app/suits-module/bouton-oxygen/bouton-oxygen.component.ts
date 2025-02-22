@@ -3,6 +3,7 @@ import { Suit } from '../model/suit';
 import { MatIcon } from '@angular/material/icon';
 import { MatButton } from '@angular/material/button';
 import { MatTooltip } from '@angular/material/tooltip';
+import { OpenDialogBoutonComponent } from '../../open-dialog-bouton/open-dialog-bouton.component';
 
 @Component({
   selector: 'app-bouton-oxygen',
@@ -10,7 +11,8 @@ import { MatTooltip } from '@angular/material/tooltip';
   templateUrl: './bouton-oxygen.component.html',
   styleUrl: './bouton-oxygen.component.less',
 })
-export class BoutonOxygenComponent {
+export class BoutonOxygenComponent extends OpenDialogBoutonComponent{
+  override actionMessage: string = `Recharger en oxygène`;
   @Input() suit!: Signal<Suit>;
 
   maxOxygen: Signal<Boolean> = computed(() => this.suit().oxygenLevel === 100);

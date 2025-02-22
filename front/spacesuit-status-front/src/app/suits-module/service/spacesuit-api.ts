@@ -8,7 +8,7 @@ import { environment } from '../../../environments/environment.development';
     providedIn: 'root'
 })
 export class SpacesuitApi {
-    apiURL: string = environment.apiURL + "/spacesuits";
+    private readonly apiURL: string = environment.apiURL + "/spacesuits";
 
     constructor(private http: HttpClient) { }
 

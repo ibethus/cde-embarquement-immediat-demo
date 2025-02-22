@@ -81,9 +81,9 @@
     </mat-card-content>
   </mat-card>
   <div class="actions">
-    <app-bouton-maintenance [suit]="suit"></app-bouton-maintenance>
-    <app-bouton-mission [suit]="suit"></app-bouton-mission>
-    <app-bouton-oxygen [suit]="suit"></app-bouton-oxygen>
-    <app-bouton-batterie [suit]="suit"></app-bouton-batterie>
+    <app-bouton-maintenance [suit]="suit" (validateAction)="validateMaintenance($event)"></app-bouton-maintenance>
+    <app-bouton-mission [suit]="suit" (validateAction)="validateMission($event)" ></app-bouton-mission>
+    <app-bouton-oxygen [suit]="suit" (validateAction)="validateOxygenRefill($event)"></app-bouton-oxygen>
+    <app-bouton-batterie [suit]="suit" (validateAction)="validateBatteryRefill($event)"></app-bouton-batterie>
   </div>
 </div>

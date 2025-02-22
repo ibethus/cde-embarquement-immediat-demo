@@ -2,6 +2,7 @@ import { Component, computed, Input, Signal } from '@angular/core';
 import { MatButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
 import { MatTooltip } from '@angular/material/tooltip';
+import { OpenDialogBoutonComponent } from '../../open-dialog-bouton/open-dialog-bouton.component';
 import { Suit } from '../model/suit';
 import { SuitStatus } from '../model/suit-status';
 
@@ -11,8 +12,10 @@ import { SuitStatus } from '../model/suit-status';
   templateUrl: './bouton-maintenance.component.html',
   styleUrl: './bouton-maintenance.component.less',
 })
-export class BoutonMaintenanceComponent {
+export class BoutonMaintenanceComponent extends OpenDialogBoutonComponent {
   @Input() suit!: Signal<Suit>;
+  override actionMessage = 'Envoyer la combinaison en révision';
+
   horsService: Signal<Boolean> = computed(
     () => this.suit().status === SuitStatus.HORS_SERVICE
   );
@@ -26,7 +29,7 @@ export class BoutonMaintenanceComponent {
       case SuitStatus.EN_MAINTENANCE:
         return 'La combinaison est déjà en maintenance';
       case SuitStatus.HORS_SERVICE:
-        return 'Envoyer la combinaison en révision';
+        return this.actionMessage;
     }
   });
 }

@@ -10,6 +10,6 @@ export interface Suit {
         min: number;
         max: number;
     };
-    lastMaintenanceDate: string;
-    nextMaintenanceDate: string;
+    lastMaintenanceDate: Date;
+    nextMaintenanceDate: Date;
 }
