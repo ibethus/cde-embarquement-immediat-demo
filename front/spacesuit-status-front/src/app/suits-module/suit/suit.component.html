@@ -1,81 +1,89 @@
-<mat-card class="suit-card">
-  <mat-card-header>
-    <mat-card-title> Combinaison #{{ suit().serialNumber }} </mat-card-title>
-    <mat-card-subtitle>
-      <div class="status-container">
-        <span
-          class="status-indicator"
-          [ngClass]="{
-            'status-operational': suit().status === 'OPERATIONNEL',
-            'status-maintenance': suit().status === 'EN_MAINTENANCE',
-            'status-outoforder': suit().status === 'HORS_SERVICE'
-          }"
-        ></span>
-        {{ suit().status }}
+<div class="container">
+  <mat-card class="suit-card">
+    <mat-card-header>
+      <mat-card-title> Combinaison #{{ suit().serialNumber }} </mat-card-title>
+      <mat-card-subtitle>
+        <div class="status-container">
+          <span
+            class="status-indicator"
+            [ngClass]="{
+              'status-operational': suit().status === 'OPERATIONNEL',
+              'status-maintenance': suit().status === 'EN_MAINTENANCE',
+              'status-outoforder': suit().status === 'HORS_SERVICE'
+            }"
+          ></span>
+          {{ suit().status }}
+        </div>
+      </mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content>
+      <div class="content-row">
+        <mat-icon>battery_charging_full</mat-icon>
+        <span>Niveau de batterie</span>
+        <mat-progress-bar
+          mode="determinate"
+          [value]="suit().batteryLevel"
+          [class]="
+            suit().batteryLevel < 20
+              ? 'critical'
+              : suit().batteryLevel < 50
+              ? 'warning'
+              : 'ok'
+          "
+        ></mat-progress-bar>
+        <span>{{ suit().batteryLevel }}%</span>
       </div>
-    </mat-card-subtitle>
-  </mat-card-header>
 
-  <mat-card-content>
-    <div class="content-row">
-      <mat-icon>battery_charging_full</mat-icon>
-      <span>Niveau de batterie</span>
-      <mat-progress-bar
-        mode="determinate"
-        [value]="suit().batteryLevel"
-        [class]="
-          suit().batteryLevel < 20
-            ? 'critical'
-            : suit().batteryLevel < 50
-            ? 'warning'
-            : 'ok'
-        "
-      ></mat-progress-bar>
-      <span>{{ suit().batteryLevel }}%</span>
-    </div>
+      <mat-divider></mat-divider>
 
-    <mat-divider></mat-divider>
+      <div class="content-row">
+        <mat-icon>air</mat-icon>
+        <span>Niveau d'oxygène</span>
+        <mat-progress-bar
+          mode="determinate"
+          [value]="suit().oxygenLevel"
+          [class]="
+            suit().oxygenLevel < 20
+              ? 'critical'
+              : suit().oxygenLevel < 50
+              ? 'warning'
+              : 'ok'
+          "
+        ></mat-progress-bar>
+        <span>{{ suit().oxygenLevel }}%</span>
+      </div>
 
-    <div class="content-row">
-      <mat-icon>air</mat-icon>
-      <span>Niveau d'oxygène</span>
-      <mat-progress-bar
-        mode="determinate"
-        [value]="suit().oxygenLevel"
-        [class]="
-          suit().oxygenLevel < 20
-            ? 'critical'
-            : suit().oxygenLevel < 50
-            ? 'warning'
-            : 'ok'
-        "
-      ></mat-progress-bar>
-      <span>{{ suit().oxygenLevel }}%</span>
-    </div>
+      <mat-divider></mat-divider>
 
-    <mat-divider></mat-divider>
+      <div class="content-row">
+        <mat-icon>thermostat</mat-icon>
+        <span>Température de fonctionnement</span>
+        <span
+          >{{ suit().temperatureRange.min }}°C à
+          {{ suit().temperatureRange.max }}°C</span
+        >
+      </div>
 
-    <div class="content-row">
-      <mat-icon>thermostat</mat-icon>
-      <span>Température de fonctionnement</span>
-      <span
-        >{{ suit().temperatureRange.min }}°C à
-        {{ suit().temperatureRange.max }}°C</span
-      >
-    </div>
+      <mat-divider></mat-divider>
 
-    <mat-divider></mat-divider>
+      <div class="content-row">
+        <mat-icon>build</mat-icon>
+        <span>Dernière maintenance</span>
+        <span>{{ suit().lastMaintenanceDate | date }}</span>
+      </div>
 
-    <div class="content-row">
-      <mat-icon>build</mat-icon>
-      <span>Dernière maintenance</span>
-      <span>{{ suit().lastMaintenanceDate | date }}</span>
-    </div>
-
-    <div class="content-row">
-      <mat-icon>event</mat-icon>
-      <span>Prochaine maintenance</span>
-      <span>{{ suit().nextMaintenanceDate | date }}</span>
-    </div>
-  </mat-card-content>
-</mat-card>
+      <div class="content-row">
+        <mat-icon>event</mat-icon>
+        <span>Prochaine maintenance</span>
+        <span>{{ suit().nextMaintenanceDate | date }}</span>
+      </div>
+    </mat-card-content>
+  </mat-card>
+  <div class="actions">
+    <app-bouton-maintenance [suit]="suit"></app-bouton-maintenance>
+    <app-bouton-mission [suit]="suit"></app-bouton-mission>
+    <app-bouton-oxygen [suit]="suit"></app-bouton-oxygen>
+    <app-bouton-batterie [suit]="suit"></app-bouton-batterie>
+  </div>
+</div>

@@ -1,6 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Input, NgModule } from '@angular/core';
-import { Suit } from './model/suit';
+import { NgModule } from '@angular/core';
 
 @NgModule({
   declarations: [],

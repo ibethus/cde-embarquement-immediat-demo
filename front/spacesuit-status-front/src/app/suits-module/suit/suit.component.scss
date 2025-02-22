@@ -1,8 +1,13 @@
-@use '@angular/material' as mat;
+@use "@angular/material" as mat;
 
-mat-card {
-  width: 50%;
-  margin: 2rem;
+.container {
+  margin: 1rem;
+}
+
+.actions {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: space-around;
 }
 
 .content-row {
@@ -10,7 +15,7 @@ mat-card {
   align-items: center;
   gap: 2rem;
   margin: 1rem 0;
-  
+
   mat-icon {
     color: var(--mat-sys-tertiary);
   }
@@ -41,19 +46,25 @@ mat-card {
 }
 
 .critical {
-  @include mat.progress-bar-overrides((
-    active-indicator-color: var(--red),
-  ));
+  @include mat.progress-bar-overrides(
+    (
+      active-indicator-color: var(--red),
+    )
+  );
 }
 
 .warning {
-  @include mat.progress-bar-overrides((
-    active-indicator-color: var(--orange),
-  ));
+  @include mat.progress-bar-overrides(
+    (
+      active-indicator-color: var(--orange),
+    )
+  );
 }
 
 .ok {
-  @include mat.progress-bar-overrides((
-    active-indicator-color: var(--green),
-  ));
+  @include mat.progress-bar-overrides(
+    (
+      active-indicator-color: var(--green),
+    )
+  );
 }
