@@ -7,7 +7,7 @@ meta {
 get {
   url: {{baseUrl}}/planets/:planetName/weather?latitude=45.32&longitude=31.89
   body: none
-  auth: none
+  auth: basic
 }
 
 params:query {
@@ -16,5 +16,10 @@ params:query {
 }
 
 params:path {
-  planetName: mars
+  planetName: venus
+}
+
+auth:basic {
+  username: space-suit-back
+  password: s3cr3t
 }
