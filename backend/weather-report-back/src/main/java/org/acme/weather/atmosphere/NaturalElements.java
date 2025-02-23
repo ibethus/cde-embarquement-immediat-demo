@@ -1,0 +1,33 @@
+package org.acme.weather.atmosphere;
+
+public enum NaturalElements {
+    ARGON,
+    AZOTE,
+    BISMUTH,
+    BROMINE,
+    CALCIUM,
+    CARBON,
+    CHROME,
+    HELIUM,
+    HYDROGEN,
+    IODINE,
+    IRON,
+    KRYPTON,
+    MAGNESIUM,
+    MERCURY,
+    NICKEL,
+    NIOBIUM,
+    OXYGEN,
+    PHOSPHORUS,
+    PLATINUM,
+    POTASSIUM,
+    SILICON,
+    SODIUM,
+    STRONTIUM,
+    SULFUR,
+    TITANIUM,
+    VANADIUM,
+    XENON,
+    ZINC,
+    ZIRCONIUM
+}
