@@ -2,7 +2,7 @@ package org.acme.spacesuites;
 
 import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 import jakarta.persistence.*;
-import org.acme.TemperatureRange;
+import org.acme.common.TemperatureRange;
 
 import java.time.Instant;
 import java.util.UUID;

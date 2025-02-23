@@ -1,4 +1,4 @@
-package org.acme;
+package org.acme.common;
 
 import jakarta.persistence.Embeddable;
 
