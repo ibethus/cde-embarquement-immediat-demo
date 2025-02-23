@@ -1,7 +1,7 @@
 <button
   id="oxygene"
-  [disabled]="maxOxygen()"
-  [disabledInteractive]="maxOxygen()"
+  [disabled]="maxOxygen() || !isAvailable()"
+  [disabledInteractive]="maxOxygen() || !isAvailable()"
   [matTooltip]="tooltipOxygen()"
   mat-raised-button
   (click)="openDialog()"

@@ -17,7 +17,8 @@
           [ngClass]="{
             'status-operational': suit.status === 'OPERATIONNEL',
             'status-maintenance': suit.status === 'EN_MAINTENANCE',
-            'status-outoforder': suit.status === 'HORS_SERVICE'
+            'status-outoforder': suit.status === 'HORS_SERVICE',
+            'status-active': suit.status === 'EN_MISSION'
           }"
         ></span>
         {{ suit.status }}

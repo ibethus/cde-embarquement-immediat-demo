@@ -1,11 +1,17 @@
 @use "@angular/material" as mat;
 
+.suit {
+  flex: 2;
+}
+
 .container {
   padding: 3rem;
-  margin-left: 3rem;
   margin-right: 3rem;
   box-shadow: 1px 0px 5px grey;
   border-radius: 1rem;
+  h3 {
+    color: var(--mat-sys-primary);
+  }
 }
 
 .content-row {
@@ -42,6 +48,9 @@
 
 .status-outoforder {
   background-color: var(--red);
+}
+.status-active {
+  background-color: var(--purple);
 }
 
 .critical {

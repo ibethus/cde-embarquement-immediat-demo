@@ -29,6 +29,9 @@ h1 {
 .status-outoforder {
   background-color: var(--red);
 }
+.status-active {
+  background-color: var(--purple);
+}
 .battery-container {
   display: flex;
   align-items: center;

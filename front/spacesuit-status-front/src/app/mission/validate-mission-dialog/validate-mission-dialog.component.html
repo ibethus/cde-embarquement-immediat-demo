@@ -1,0 +1,25 @@
+@if (validation()) {
+  @if (validation()?.isValid) {
+<mat-dialog-content>
+  <p>Cette combinaison convient pour la météo prévue.</p>
+  <p>Confirmer l'assignation de la combinaison à cette mission ?</p>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button id="cancel" mat-button (click)="cancel()">Non</button>
+  <button id="confirm" mat-button (click)="confirm()">Oui</button>
+</mat-dialog-actions>
+  } @else {
+    <mat-dialog-content>
+      <p>Les données météo ne permettent pas à cette combinaison d'être assignée à cette mission</p>
+      <p>Erreur : {{ validation()?.message }}</p>
+    </mat-dialog-content>
+    <mat-dialog-actions>
+      <button id="cancel" mat-button (click)="cancel()">Fermer</button>
+    </mat-dialog-actions>
+  }
+} @else {
+<div class="spinner-content">
+  <span>Validation des données météo...</span>
+  <mat-spinner></mat-spinner>
+</div>
+}

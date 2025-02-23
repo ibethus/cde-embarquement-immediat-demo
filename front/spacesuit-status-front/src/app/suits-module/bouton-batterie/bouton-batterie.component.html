@@ -1,7 +1,7 @@
 <button
   id="batterie"
-  [disabled]="maxBattery()"
-  [disabledInteractive]="maxBattery()"
+  [disabled]="maxBattery() || !isAvailable()"
+  [disabledInteractive]="maxBattery() || !isAvailable()"
   [matTooltip]="tooltipBattery()"
   mat-raised-button
   (click)="openDialog()"

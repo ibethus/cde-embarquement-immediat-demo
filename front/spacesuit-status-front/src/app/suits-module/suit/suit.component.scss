@@ -45,6 +45,10 @@
   background-color: var(--red);
 }
 
+.status-active {
+  background-color: var(--purple);
+}
+
 .critical {
   @include mat.progress-bar-overrides(
     (

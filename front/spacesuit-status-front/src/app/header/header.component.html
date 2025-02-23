@@ -5,6 +5,9 @@
       <span class="app-title">SpaceSuit Manager</span>
     </a>
   </div>
+  @if (keycloak.authenticated) {
+  <span>Bonjour {{ username }} !</span>
+  }
 
   <nav class="nav-links">
     <a
@@ -16,7 +19,12 @@
       <mat-icon>home</mat-icon>
       Accueil
     </a>
-    <a *kaHasRoles="['astronaut'], checkRealm: true;" mat-button routerLink="/suits" routerLinkActive="active">
+    <a
+      *kaHasRoles="['astronaut']; checkRealm: true"
+      mat-button
+      routerLink="/suits"
+      routerLinkActive="active"
+    >
       <mat-icon>engineering</mat-icon>
       Combinaisons
     </a>

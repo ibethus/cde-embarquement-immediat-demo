@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
-import { MatToolbarModule } from '@angular/material/toolbar';
+import { Component, Signal } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { HasRolesDirective } from 'keycloak-angular';
+import Keycloak from 'keycloak-js'
 
 @Component({
   selector: 'app-header',
@@ -14,9 +15,16 @@ import { HasRolesDirective } from 'keycloak-angular';
     MatIconModule,
     RouterLink,
     RouterLinkActive,
-    HasRolesDirective
+    HasRolesDirective,
   ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.less',
 })
-export class HeaderComponent {}
+export class HeaderComponent {
+  constructor(keycloak: Keycloak){
+    this.keycloak = keycloak;
+    keycloak.loadUserProfile().then(res => this.username = res.firstName);
+  }
+  keycloak: Keycloak;
+  username: string | undefined;
+}

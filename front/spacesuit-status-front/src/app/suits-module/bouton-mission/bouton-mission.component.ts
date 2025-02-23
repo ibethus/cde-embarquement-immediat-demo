@@ -21,9 +21,15 @@ export class BoutonMissionComponent extends OpenDialogBoutonComponent {
   operationnel: Signal<Boolean> = computed(
     () => this.suit().status === SuitStatus.OPERATIONNEL
   );
-  tooltipMission: Signal<string> = computed(() =>
-    this.operationnel()
-      ? this.actionMessage
-      : "La combinaison n'est pas opérationnelle"
-  );
+  tooltipMission: Signal<string> = computed(() => {
+    switch (this.suit().status) {
+      case SuitStatus.OPERATIONNEL:
+        return this.actionMessage;
+      case SuitStatus.EN_MISSION:
+        return 'La combinaison est en mission';
+      case SuitStatus.EN_MAINTENANCE:
+      case SuitStatus.HORS_SERVICE:
+        return 'La combinaison est hors service';
+    }
+  });
 }

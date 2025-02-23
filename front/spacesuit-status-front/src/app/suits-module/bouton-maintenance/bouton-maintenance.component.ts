@@ -28,6 +28,8 @@ export class BoutonMaintenanceComponent extends OpenDialogBoutonComponent {
         return 'La combinaison est déjà opérationnelle';
       case SuitStatus.EN_MAINTENANCE:
         return 'La combinaison est déjà en maintenance';
+      case SuitStatus.EN_MISSION:
+        return 'La combinaison est en mission';
       case SuitStatus.HORS_SERVICE:
         return this.actionMessage;
     }

@@ -4,6 +4,7 @@ import { MatIcon } from '@angular/material/icon';
 import { MatTooltip } from '@angular/material/tooltip';
 import { Suit } from '../model/suit';
 import { OpenDialogBoutonComponent } from '../../open-dialog-bouton/open-dialog-bouton.component';
+import { SuitStatus } from '../model/suit-status';
 
 @Component({
   selector: 'app-bouton-batterie',
@@ -12,16 +13,22 @@ import { OpenDialogBoutonComponent } from '../../open-dialog-bouton/open-dialog-
   styleUrl: './bouton-batterie.component.less',
 })
 export class BoutonBatterieComponent extends OpenDialogBoutonComponent {
-  override actionMessage: string = "Remplacer par une batterie pleine (20€)";
+  override actionMessage: string = 'Remplacer par une batterie pleine (20€)';
   @Input() suit!: Signal<Suit>;
 
   maxBattery: Signal<Boolean> = computed(
     () => this.suit().batteryLevel === 100
   );
-
-  tooltipBattery: Signal<string> = computed(() =>
-    this.maxBattery()
-      ? 'La batterie est déjà chargée'
-      : this.actionMessage
+  isAvailable: Signal<boolean> = computed(
+    () => this.suit().status != SuitStatus.EN_MISSION
   );
+
+  tooltipBattery: Signal<string> = computed(() => {
+    if (this.suit().status === SuitStatus.EN_MISSION) {
+      return 'La combinaison est en mission';
+    } else if (this.maxBattery()) {
+      return 'La batterie est déjà chargée';
+    }
+    return this.actionMessage;
+  });
 }
