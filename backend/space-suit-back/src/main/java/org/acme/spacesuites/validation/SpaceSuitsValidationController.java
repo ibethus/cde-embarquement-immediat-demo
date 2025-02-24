@@ -3,10 +3,7 @@ package org.acme.spacesuites.validation;
 import jakarta.annotation.security.DenyAll;
 import jakarta.annotation.security.RolesAllowed;
 import jakarta.inject.Inject;
-import jakarta.ws.rs.GET;
-import jakarta.ws.rs.Path;
-import jakarta.ws.rs.PathParam;
-import jakarta.ws.rs.Produces;
+import jakarta.ws.rs.*;
 import org.acme.spacesuites.Spacesuits;
 
 import java.util.UUID;
@@ -18,7 +15,7 @@ public class SpaceSuitsValidationController {
     @Inject
     SpaceSuitsValidationService spaceSuitsValidationService;
 
-    @GET
+    @POST
     @Path("{id}/validate")
     @Produces("application/json")
     @RolesAllowed("user")
