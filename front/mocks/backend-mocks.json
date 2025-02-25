@@ -202,13 +202,17 @@
         {
           "uuid": "e5360933-810c-4c17-8b7d-2a2e510e532c",
           "body": "{\n  \"isValid\": {{faker 'datatype.boolean'}},\n  \"message\": \"\"\n}",
-          "latency": 0,
+          "latency": 1500,
           "statusCode": 200,
           "label": "Combinaison validée et prête pour la sortie",
           "headers": [
             {
               "key": "Content-Type",
               "value": "application/json"
+            },
+            {
+              "key": "Access-Control-Allow-Origin",
+              "value": "*"
             }
           ],
           "bodyType": "INLINE",
@@ -251,6 +255,42 @@
       "responseMode": null,
       "streamingMode": null,
       "streamingInterval": 0
+    },
+    {
+      "uuid": "6c66b71a-a5e5-4d0d-aa37-679b2026c096",
+      "type": "crud",
+      "documentation": "",
+      "method": "",
+      "endpoint": "spacesuits",
+      "responses": [
+        {
+          "uuid": "ee0b51fa-4331-47bd-9267-8b90989c9cb7",
+          "body": "{}",
+          "latency": 120,
+          "statusCode": 200,
+          "label": "",
+          "headers": [
+            {
+              "key": "Access-Control-Allow-Origin",
+              "value": "*"
+            }
+          ],
+          "bodyType": "DATABUCKET",
+          "filePath": "",
+          "databucketID": "nudt",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null,
+      "streamingMode": null,
+      "streamingInterval": 0
     }
   ],
   "rootChildren": [
@@ -277,6 +317,10 @@
     {
       "type": "route",
       "uuid": "e9c97860-ae72-4701-9d6a-28a370add12a"
+    },
+    {
+      "type": "route",
+      "uuid": "6c66b71a-a5e5-4d0d-aa37-679b2026c096"
     }
   ],
   "proxyMode": false,
@@ -305,6 +349,14 @@
       "value": ""
     }
   ],
-  "data": [],
+  "data": [
+    {
+      "uuid": "6633f01d-a62c-4d61-a7cf-36a33e51b3d7",
+      "id": "nudt",
+      "name": "spacesuits-bucket",
+      "documentation": "",
+      "value": "[\r\n  {\r\n    \"id\": \"ffd85495-d295-4bbc-a5c0-18f1894e4739\",\r\n    \"serialNumber\": \"aY3nqUJfBV9D\",\r\n    \"status\": \"OPERATIONNEL\",\r\n    \"oxygenLevel\": 15,\r\n    \"batteryLevel\": 44,\r\n    \"temperatureRange\": {\r\n      \"min\": 13,\r\n      \"max\": 138\r\n    },\r\n    \"lastMaintenanceDate\": \"Thu Jun 27 2024 06:51:58 GMT+0200 (heure d’été d’Europe centrale)\",\r\n    \"nextMaintenanceDate\": \"Sat Sep 13 2025 13:54:39 GMT+0200 (heure d’été d’Europe centrale)\"\r\n  },\r\n  {\r\n    \"id\": \"304062ba-6497-4a6b-8d25-be75b865dd2c\",\r\n    \"serialNumber\": \"GVxhmXdhL2wj\",\r\n    \"status\": \"EN_MISSION\",\r\n    \"oxygenLevel\": 23,\r\n    \"batteryLevel\": 10,\r\n    \"temperatureRange\": {\r\n      \"min\": 18,\r\n      \"max\": 70\r\n    },\r\n    \"lastMaintenanceDate\": \"Wed Jun 26 2024 22:19:02 GMT+0200 (heure d’été d’Europe centrale)\",\r\n    \"nextMaintenanceDate\": \"Tue Sep 23 2025 20:24:59 GMT+0200 (heure d’été d’Europe centrale)\"\r\n  },\r\n  {\r\n    \"id\": \"e6e7fc36-1e86-49d3-b525-bb24f060f5ad\",\r\n    \"serialNumber\": \"TWX9izGMN8SP\",\r\n    \"status\": \"HORS_SERVICE\",\r\n    \"oxygenLevel\": 25,\r\n    \"batteryLevel\": 32,\r\n    \"temperatureRange\": {\r\n      \"min\": 26,\r\n      \"max\": 71\r\n    },\r\n    \"lastMaintenanceDate\": \"Tue Sep 24 2024 05:44:52 GMT+0200 (heure d’été d’Europe centrale)\",\r\n    \"nextMaintenanceDate\": \"Mon Jan 19 2026 21:28:21 GMT+0100 (heure normale d’Europe centrale)\"\r\n  },\r\n  {\r\n    \"id\": \"c6e44bcb-8b46-449a-acd6-6cab2c106e18\",\r\n    \"serialNumber\": \"SmlVVaRAFOmn\",\r\n    \"status\": \"OPERATIONNEL\",\r\n    \"oxygenLevel\": 63,\r\n    \"batteryLevel\": 57,\r\n    \"temperatureRange\": {\r\n      \"min\": 44,\r\n      \"max\": 129\r\n    },\r\n    \"lastMaintenanceDate\": \"Thu Jun 06 2024 04:02:33 GMT+0200 (heure d’été d’Europe centrale)\",\r\n    \"nextMaintenanceDate\": \"Wed Jan 14 2026 00:29:30 GMT+0100 (heure normale d’Europe centrale)\"\r\n  },\r\n  {\r\n    \"id\": \"fab9fdab-b424-4a8a-9858-98603ef91c42\",\r\n    \"serialNumber\": \"cVFZoUJTdeaz\",\r\n    \"status\": \"EN_MAINTENANCE\",\r\n    \"oxygenLevel\": 60,\r\n    \"batteryLevel\": 68,\r\n    \"temperatureRange\": {\r\n      \"min\": 14,\r\n      \"max\": 137\r\n    },\r\n    \"lastMaintenanceDate\": \"Mon Jan 27 2025 22:09:12 GMT+0100 (heure normale d’Europe centrale)\",\r\n    \"nextMaintenanceDate\": \"Thu Feb 12 2026 11:11:47 GMT+0100 (heure normale d’Europe centrale)\"\r\n  },\r\n  {\r\n    \"id\": \"73a10676-5591-4e3c-bcd2-941ff7d97d89\",\r\n    \"serialNumber\": \"EwXLW6SMP3x3\",\r\n    \"status\": \"EN_MISSION\",\r\n    \"oxygenLevel\": 39,\r\n    \"batteryLevel\": 21,\r\n    \"temperatureRange\": {\r\n      \"min\": 29,\r\n      \"max\": 176\r\n    },\r\n    \"lastMaintenanceDate\": \"Mon Nov 25 2024 23:38:07 GMT+0100 (heure normale d’Europe centrale)\",\r\n    \"nextMaintenanceDate\": \"Sun Oct 19 2025 11:27:21 GMT+0200 (heure d’été d’Europe centrale)\"\r\n  },\r\n  {\r\n    \"id\": \"3366932f-9f56-41c6-b4d9-4ab5f5dcc4b2\",\r\n    \"serialNumber\": \"PzZn2cU5T8Qu\",\r\n    \"status\": \"HORS_SERVICE\",\r\n    \"oxygenLevel\": 43,\r\n    \"batteryLevel\": 58,\r\n    \"temperatureRange\": {\r\n      \"min\": 18,\r\n      \"max\": 92\r\n    },\r\n    \"lastMaintenanceDate\": \"Wed Sep 18 2024 01:49:51 GMT+0200 (heure d’été d’Europe centrale)\",\r\n    \"nextMaintenanceDate\": \"Fri Sep 12 2025 12:30:08 GMT+0200 (heure d’été d’Europe centrale)\"\r\n  },\r\n  {\r\n    \"id\": \"eea09877-cd9f-4385-82d4-a0041c4be59d\",\r\n    \"serialNumber\": \"3q7vuVGyl0L5\",\r\n    \"status\": \"EN_MISSION\",\r\n    \"oxygenLevel\": 21,\r\n    \"batteryLevel\": 83,\r\n    \"temperatureRange\": {\r\n      \"min\": 46,\r\n      \"max\": 138\r\n    },\r\n    \"lastMaintenanceDate\": \"Thu Aug 22 2024 07:13:44 GMT+0200 (heure d’été d’Europe centrale)\",\r\n    \"nextMaintenanceDate\": \"Sat Jul 12 2025 02:43:09 GMT+0200 (heure d’été d’Europe centrale)\"\r\n  },\r\n  {\r\n    \"id\": \"995b5c02-d082-4a16-9348-536dccd2f114\",\r\n    \"serialNumber\": \"DI6X77BYSDRv\",\r\n    \"status\": \"OPERATIONNEL\",\r\n    \"oxygenLevel\": 94,\r\n    \"batteryLevel\": 15,\r\n    \"temperatureRange\": {\r\n      \"min\": 38,\r\n      \"max\": 100\r\n    },\r\n    \"lastMaintenanceDate\": \"Sat Apr 20 2024 20:03:07 GMT+0200 (heure d’été d’Europe centrale)\",\r\n    \"nextMaintenanceDate\": \"Mon Oct 27 2025 12:56:15 GMT+0100 (heure normale d’Europe centrale)\"\r\n  },\r\n  {\r\n    \"id\": \"f035cfe1-6dc3-4f23-b5f1-acb4dc9160e2\",\r\n    \"serialNumber\": \"7KI4IH5jkZtv\",\r\n    \"status\": \"EN_MAINTENANCE\",\r\n    \"oxygenLevel\": 91,\r\n    \"batteryLevel\": 73,\r\n    \"temperatureRange\": {\r\n      \"min\": 21,\r\n      \"max\": 174\r\n    },\r\n    \"lastMaintenanceDate\": \"Fri Jan 17 2025 03:58:13 GMT+0100 (heure normale d’Europe centrale)\",\r\n    \"nextMaintenanceDate\": \"Tue Nov 18 2025 07:17:51 GMT+0100 (heure normale d’Europe centrale)\"\r\n  },\r\n  {\r\n    \"id\": \"b5d5de62-5a73-4c87-8455-c32439b86800\",\r\n    \"serialNumber\": \"h6hCFjN0bUcR\",\r\n    \"status\": \"EN_MAINTENANCE\",\r\n    \"oxygenLevel\": 46,\r\n    \"batteryLevel\": 100,\r\n    \"temperatureRange\": {\r\n      \"min\": 32,\r\n      \"max\": 72\r\n    },\r\n    \"lastMaintenanceDate\": \"Fri Oct 11 2024 05:15:39 GMT+0200 (heure d’été d’Europe centrale)\",\r\n    \"nextMaintenanceDate\": \"Thu May 01 2025 22:51:49 GMT+0200 (heure d’été d’Europe centrale)\"\r\n  },\r\n  {\r\n    \"id\": \"9ce42447-a91e-42f0-832f-d7296d497c1d\",\r\n    \"serialNumber\": \"q3jy1oEYzA67\",\r\n    \"status\": \"EN_MAINTENANCE\",\r\n    \"oxygenLevel\": 74,\r\n    \"batteryLevel\": 84,\r\n    \"temperatureRange\": {\r\n      \"min\": 29,\r\n      \"max\": 119\r\n    },\r\n    \"lastMaintenanceDate\": \"Mon Dec 30 2024 20:34:36 GMT+0100 (heure normale d’Europe centrale)\",\r\n    \"nextMaintenanceDate\": \"Tue Sep 30 2025 20:28:13 GMT+0200 (heure d’été d’Europe centrale)\"\r\n  },\r\n  {\r\n    \"id\": \"df616632-2420-4a06-9c3f-d32a8b0a2eff\",\r\n    \"serialNumber\": \"X2HDEpXuMGTg\",\r\n    \"status\": \"HORS_SERVICE\",\r\n    \"oxygenLevel\": 21,\r\n    \"batteryLevel\": 92,\r\n    \"temperatureRange\": {\r\n      \"min\": 17,\r\n      \"max\": 89\r\n    },\r\n    \"lastMaintenanceDate\": \"Mon Oct 07 2024 19:14:14 GMT+0200 (heure d’été d’Europe centrale)\",\r\n    \"nextMaintenanceDate\": \"Sun Oct 05 2025 23:28:47 GMT+0200 (heure d’été d’Europe centrale)\"\r\n  },\r\n  {\r\n    \"id\": \"9d0e76a8-dac9-47f2-ae4e-7df3d2101d48\",\r\n    \"serialNumber\": \"UPLkUA98zhBE\",\r\n    \"status\": \"HORS_SERVICE\",\r\n    \"oxygenLevel\": 10,\r\n    \"batteryLevel\": 100,\r\n    \"temperatureRange\": {\r\n      \"min\": 41,\r\n      \"max\": 118\r\n    },\r\n    \"lastMaintenanceDate\": \"Mon Dec 02 2024 14:03:02 GMT+0100 (heure normale d’Europe centrale)\",\r\n    \"nextMaintenanceDate\": \"Sun Jun 22 2025 16:35:35 GMT+0200 (heure d’été d’Europe centrale)\"\r\n  },\r\n  {\r\n    \"id\": \"e835d22c-408a-4c39-b5d0-2e1e042e0b0a\",\r\n    \"serialNumber\": \"WRWGk0OUbTN9\",\r\n    \"status\": \"EN_MAINTENANCE\",\r\n    \"oxygenLevel\": 10,\r\n    \"batteryLevel\": 41,\r\n    \"temperatureRange\": {\r\n      \"min\": 23,\r\n      \"max\": 84\r\n    },\r\n    \"lastMaintenanceDate\": \"Tue Dec 24 2024 00:08:23 GMT+0100 (heure normale d’Europe centrale)\",\r\n    \"nextMaintenanceDate\": \"Wed Nov 05 2025 00:05:02 GMT+0100 (heure normale d’Europe centrale)\"\r\n  },\r\n  {\r\n    \"id\": \"8e61d147-0564-4ba1-ab5c-8bb5ad6e22ca\",\r\n    \"serialNumber\": \"E1gRkdmIrglN\",\r\n    \"status\": \"OPERATIONNEL\",\r\n    \"oxygenLevel\": 32,\r\n    \"batteryLevel\": 13,\r\n    \"temperatureRange\": {\r\n      \"min\": 49,\r\n      \"max\": 92\r\n    },\r\n    \"lastMaintenanceDate\": \"Sat Oct 12 2024 16:28:46 GMT+0200 (heure d’été d’Europe centrale)\",\r\n    \"nextMaintenanceDate\": \"Thu Jul 24 2025 15:09:43 GMT+0200 (heure d’été d’Europe centrale)\"\r\n  },\r\n  {\r\n    \"id\": \"ca4db896-0bb7-48c7-b5b2-bd7c89ee2ef7\",\r\n    \"serialNumber\": \"4xB9kGpzQE8p\",\r\n    \"status\": \"HORS_SERVICE\",\r\n    \"oxygenLevel\": 60,\r\n    \"batteryLevel\": 26,\r\n    \"temperatureRange\": {\r\n      \"min\": 39,\r\n      \"max\": 168\r\n    },\r\n    \"lastMaintenanceDate\": \"Tue Nov 19 2024 00:30:07 GMT+0100 (heure normale d’Europe centrale)\",\r\n    \"nextMaintenanceDate\": \"Fri Sep 19 2025 23:01:28 GMT+0200 (heure d’été d’Europe centrale)\"\r\n  },\r\n  {\r\n    \"id\": \"30c5f321-4873-484e-9666-0df2c4b3488a\",\r\n    \"serialNumber\": \"HhdXxtBNoGtH\",\r\n    \"status\": \"HORS_SERVICE\",\r\n    \"oxygenLevel\": 64,\r\n    \"batteryLevel\": 62,\r\n    \"temperatureRange\": {\r\n      \"min\": 45,\r\n      \"max\": 81\r\n    },\r\n    \"lastMaintenanceDate\": \"Mon Aug 12 2024 11:32:36 GMT+0200 (heure d’été d’Europe centrale)\",\r\n    \"nextMaintenanceDate\": \"Tue Sep 23 2025 22:22:54 GMT+0200 (heure d’été d’Europe centrale)\"\r\n  },\r\n  {\r\n    \"id\": \"f8448550-8767-48fb-8fbe-12c0ca10a93c\",\r\n    \"serialNumber\": \"FKfNKpdwzm5j\",\r\n    \"status\": \"EN_MAINTENANCE\",\r\n    \"oxygenLevel\": 79,\r\n    \"batteryLevel\": 84,\r\n    \"temperatureRange\": {\r\n      \"min\": 20,\r\n      \"max\": 175\r\n    },\r\n    \"lastMaintenanceDate\": \"Sat Feb 08 2025 15:20:28 GMT+0100 (heure normale d’Europe centrale)\",\r\n    \"nextMaintenanceDate\": \"Tue Oct 21 2025 09:54:41 GMT+0200 (heure d’été d’Europe centrale)\"\r\n  },\r\n  {\r\n    \"id\": \"873eea6f-5aa4-4c86-b181-ba8656a47481\",\r\n    \"serialNumber\": \"xthONUfYQjqk\",\r\n    \"status\": \"OPERATIONNEL\",\r\n    \"oxygenLevel\": 22,\r\n    \"batteryLevel\": 98,\r\n    \"temperatureRange\": {\r\n      \"min\": 29,\r\n      \"max\": 135\r\n    },\r\n    \"lastMaintenanceDate\": \"Mon Jul 15 2024 21:52:39 GMT+0200 (heure d’été d’Europe centrale)\",\r\n    \"nextMaintenanceDate\": \"Wed Oct 15 2025 13:24:25 GMT+0200 (heure d’été d’Europe centrale)\"\r\n  }\r\n]"
+    }
+  ],
   "callbacks": []
 }
