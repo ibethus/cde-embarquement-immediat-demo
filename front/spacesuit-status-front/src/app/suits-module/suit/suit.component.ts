@@ -1,5 +1,11 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, signal, WritableSignal } from '@angular/core';
+import {
+  Component,
+  Inject,
+  Input,
+  signal,
+  WritableSignal,
+} from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
@@ -14,7 +20,8 @@ import { SpacesuitApi } from '../service/spacesuit-api';
 import { Router } from '@angular/router';
 import { BoutonSuppressionComponent } from '../bouton-suppression/bouton-suppression.component';
 import { HasRolesDirective } from 'keycloak-angular';
-import { SuitViewerComponent } from "../suit-viewer/suit-viewer.component";
+import { SuitViewerComponent } from '../suit-viewer/suit-viewer.component';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-suit',
@@ -31,15 +38,17 @@ import { SuitViewerComponent } from "../suit-viewer/suit-viewer.component";
     BoutonMaintenanceComponent,
     BoutonSuppressionComponent,
     HasRolesDirective,
-    SuitViewerComponent
-],
+    SuitViewerComponent,
+  ],
   templateUrl: './suit.component.html',
   styleUrls: ['./suit.component.scss'],
 })
 export class SuitComponent {
-  constructor(suitService: SpacesuitApi, router: Router) {
+  private toastr: ToastrService;
+  constructor(suitService: SpacesuitApi, router: Router, toastr: ToastrService) {
     this.suitService = suitService;
     this.router = router;
+    this.toastr = toastr;
   }
   router: Router;
   suitService: SpacesuitApi;
@@ -60,7 +69,10 @@ export class SuitComponent {
       nextYear.setMonth(new Date().getMonth() + 12);
       updatedSuit.nextMaintenanceDate = nextYear;
       this.suitService.update(updatedSuit.id, updatedSuit).subscribe({
-        next: (_) => this.suit.set(updatedSuit),
+        next: (_) => {
+          this.suit.set(updatedSuit);
+          this.toastr.success('Combinaison envoyée en maintenance');
+        },
         error: (error) => console.error(error),
       });
     }
@@ -70,7 +82,10 @@ export class SuitComponent {
       let updatedSuit: Suit = { ...this.suit() };
       updatedSuit.batteryLevel = 100;
       this.suitService.update(updatedSuit.id, updatedSuit).subscribe({
-        next: (_) => this.suit.set(updatedSuit),
+        next: (_) => {
+          this.suit.set(updatedSuit);
+          this.toastr.success('Batterie changée');
+        },
         error: (error) => console.error(error),
       });
     }
@@ -80,7 +95,10 @@ export class SuitComponent {
       let updatedSuit: Suit = { ...this.suit() };
       updatedSuit.oxygenLevel = 100;
       this.suitService.update(updatedSuit.id, updatedSuit).subscribe({
-        next: (_) => this.suit.set(updatedSuit),
+        next: (_) => {
+          this.suit.set(updatedSuit);
+          this.toastr.success('Oxygène rechargé');
+        },
         error: (error) => console.error(error),
       });
     }
@@ -88,7 +106,10 @@ export class SuitComponent {
   validateDelete($event: boolean) {
     if ($event) {
       this.suitService.delete(this.suit().id).subscribe({
-        next: (_) => this.router.navigate(['/suits/']),
+        next: (_) => {
+          this.toastr.warning("Combinaison supprimée");
+          this.router.navigate(['/suits/']);        
+        },
         error: (error) => console.error(error),
       });
     }
