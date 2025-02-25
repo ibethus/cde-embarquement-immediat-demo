@@ -2,10 +2,17 @@
 
 .container {
   margin: 1rem;
+  .cards {
+    display: flex;
+    justify-content: space-around;
+  }
+  .suit-card {
+    width: 50vw;
+  }
 }
 
 .actions {
-  margin-top: 1rem;
+  margin-top: 3rem;
   display: flex;
   justify-content: space-around;
 }
