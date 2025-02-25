@@ -1,7 +1,3 @@
-import {
-  provideHttpClient,
-  withInterceptorsFromDi,
-} from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -12,6 +8,6 @@ import { MissionModule } from './mission/mission.module';
   imports: [BrowserModule, MatButtonModule, MatIconModule, MissionModule],
   declarations: [],
   bootstrap: [],
-  providers: [provideHttpClient()],
+  providers: [],
 })
 export class AppModule {}

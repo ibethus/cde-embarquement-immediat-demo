@@ -6,6 +6,8 @@ import io.quarkus.panache.common.Sort;
 import io.quarkus.rest.data.panache.ResourceProperties;
 import jakarta.annotation.security.DenyAll;
 import jakarta.annotation.security.RolesAllowed;
+import jakarta.ws.rs.Produces;
+import org.jboss.resteasy.reactive.server.spi.ContentType;
 
 import java.util.List;
 import java.util.UUID;
@@ -27,6 +29,7 @@ public interface SpacesuitsResource extends PanacheEntityResource<Spacesuits, UU
     Spacesuits add(Spacesuits entity);
 
     @RolesAllowed("maintainer")
+    @Produces("application/json")
     Spacesuits update(UUID id, Spacesuits entity);
 
     @RolesAllowed("maintainer")

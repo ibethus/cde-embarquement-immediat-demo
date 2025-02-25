@@ -41,7 +41,7 @@ export class SuitRecapComponent {
       let updatedSuit: Suit = { ...this.suit() };
       updatedSuit.status = SuitStatus.EN_MISSION;
       this.suitService.update(updatedSuit.id, updatedSuit).subscribe({
-        next: (result) => this.suit.set(result),
+        next: (_) => this.suit.set(updatedSuit),
         error: (error) => console.error(error),
       });
     }

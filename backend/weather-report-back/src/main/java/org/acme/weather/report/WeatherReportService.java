@@ -17,7 +17,7 @@ public class WeatherReportService {
     public WeatherConditions getWeatherReport(PlanetPosition planetPosition) {
         return new WeatherConditions(planetPosition.planetName(),
                 planetPosition.coordinates(),
-                randomDouble(-600, 600),
+                randomDouble(-200, 200),
                 randomDouble(0, 100),
                 randomDouble(0, 200),
                 atmosphereGenerator.generateAtmosphere(),

@@ -13,6 +13,6 @@ public class SpaceSuitStatusValidator implements SpaceSuitValidator {
 
     @Override
     public SpaceSuiteValidation checkSpaceSuit(Spacesuits spaceSuit, WeatherReportService.WeatherConditions weatherConditions) {
-        return new SpaceSuiteValidation(spaceSuit.status == SpacesuitesStatus.OPERATIONNEL, "Status is : " + spaceSuit.status);
+        return new SpaceSuiteValidation(spaceSuit.status == SpacesuitesStatus.OPERATIONNEL, "Le statut : " + spaceSuit.status);
     }
 }

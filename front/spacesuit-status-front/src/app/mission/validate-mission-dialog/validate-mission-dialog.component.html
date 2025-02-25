@@ -2,6 +2,7 @@
   @if (validation()?.isValid) {
 <mat-dialog-content>
   <p>Cette combinaison convient pour la météo prévue.</p>
+  <p>Rapports : {{ validation()?.message }}</p>
   <p>Confirmer l'assignation de la combinaison à cette mission ?</p>
 </mat-dialog-content>
 <mat-dialog-actions>

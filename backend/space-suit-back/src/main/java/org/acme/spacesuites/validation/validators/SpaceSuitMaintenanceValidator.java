@@ -12,6 +12,6 @@ public class SpaceSuitMaintenanceValidator implements SpaceSuitValidator {
 
     @Override
     public SpaceSuiteValidation checkSpaceSuit(Spacesuits spaceSuit, WeatherReportService.WeatherConditions weatherConditions) {
-        return new SpaceSuiteValidation(spaceSuit.nextMaintenanceDate != null && spaceSuit.nextMaintenanceDate.isAfter(Instant.now()), "Last maintenance is " + spaceSuit.lastMaintenanceDate);
+        return new SpaceSuiteValidation(spaceSuit.nextMaintenanceDate != null && spaceSuit.nextMaintenanceDate.isAfter(Instant.now()), "Dernière date de maintenance : " + spaceSuit.lastMaintenanceDate);
     }
 }

@@ -1,16 +1,17 @@
+import { environment } from '../environments/environment';
 import {
-    provideKeycloak,
-    createInterceptorCondition,
+  provideKeycloak,
+  createInterceptorCondition,
     IncludeBearerTokenCondition,
     INCLUDE_BEARER_TOKEN_INTERCEPTOR_CONFIG,
     withAutoRefreshToken,
     AutoRefreshTokenService,
     UserActivityService
   } from 'keycloak-angular';
-import { environment } from '../environments/environment.development';
   
-  const localhostCondition = createInterceptorCondition<IncludeBearerTokenCondition>({
-    urlPattern: /^.*$/i,
+  const urlCondition = createInterceptorCondition<IncludeBearerTokenCondition>({
+    urlPattern: /^(http:\/\/localhost:8080)(\/.*)?$/i,
+    bearerPrefix: 'Bearer'
   });
   
   export const provideKeycloakAngular = () =>
@@ -35,7 +36,7 @@ import { environment } from '../environments/environment.development';
         UserActivityService,
         {
           provide: INCLUDE_BEARER_TOKEN_INTERCEPTOR_CONFIG,
-          useValue: [localhostCondition]
+          useValue: [urlCondition]
         }
       ]
     });

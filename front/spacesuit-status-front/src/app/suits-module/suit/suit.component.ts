@@ -50,8 +50,11 @@ export class SuitComponent {
       let updatedSuit: Suit = { ...this.suit() };
       updatedSuit.status = SuitStatus.EN_MAINTENANCE;
       updatedSuit.lastMaintenanceDate = new Date();
+      const nextYear = new Date();
+      nextYear.setMonth(new Date().getMonth() + 12);
+      updatedSuit.nextMaintenanceDate = nextYear;
       this.suitService.update(updatedSuit.id, updatedSuit).subscribe({
-        next: (result) => this.suit.set(result),
+        next: (_) => this.suit.set(updatedSuit),
         error: (error) => console.error(error),
       });
     }
@@ -61,7 +64,7 @@ export class SuitComponent {
       let updatedSuit: Suit = { ...this.suit() };
       updatedSuit.batteryLevel = 100;
       this.suitService.update(updatedSuit.id, updatedSuit).subscribe({
-        next: (result) => this.suit.set(result),
+        next: (_) => this.suit.set(updatedSuit),
         error: (error) => console.error(error),
       });
     }
@@ -71,7 +74,7 @@ export class SuitComponent {
       let updatedSuit: Suit = { ...this.suit() };
       updatedSuit.oxygenLevel = 100;
       this.suitService.update(updatedSuit.id, updatedSuit).subscribe({
-        next: (result) => this.suit.set(result),
+        next: (_) => this.suit.set(updatedSuit),
         error: (error) => console.error(error),
       });
     }

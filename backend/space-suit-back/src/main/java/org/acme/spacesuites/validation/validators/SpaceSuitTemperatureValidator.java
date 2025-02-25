@@ -11,6 +11,6 @@ public class SpaceSuitTemperatureValidator implements SpaceSuitValidator {
     @Override
     public SpaceSuiteValidation checkSpaceSuit(Spacesuits spaceSuit, WeatherReportService.WeatherConditions weatherConditions) {
         return new SpaceSuiteValidation(spaceSuit.temperatureRange.min <= weatherConditions.celsiusTemperature() && spaceSuit.temperatureRange.max >= weatherConditions.celsiusTemperature(),
-                "External temparature is " + weatherConditions.celsiusTemperature() + "°C (between " + spaceSuit.temperatureRange.min + " and " + spaceSuit.temperatureRange.max + ")");
+                "Température extérieure : " + weatherConditions.celsiusTemperature() + "°C (entre " + spaceSuit.temperatureRange.min + " et " + spaceSuit.temperatureRange.max + ")");
     }
 }

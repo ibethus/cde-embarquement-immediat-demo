@@ -13,6 +13,6 @@ public class SpaceSuitOxygenValidator implements SpaceSuitValidator {
     @Override
     public SpaceSuiteValidation checkSpaceSuit(Spacesuits spaceSuit, WeatherReportService.WeatherConditions weatherConditions) {
         return new SpaceSuiteValidation(spaceSuit.oxygenLevel > MIN_OXYGEN_LEVEL,
-                "Oxygen level is : " + spaceSuit.oxygenLevel + " % (> " + MIN_OXYGEN_LEVEL + ")");
+                "Le niveau d'oxygène est : " + spaceSuit.oxygenLevel + " % (> " + MIN_OXYGEN_LEVEL + ")");
     }
 }

@@ -18,11 +18,15 @@ export class BoutonMaintenanceComponent extends OpenDialogBoutonComponent {
 
   horsService: Signal<Boolean> = computed(
     () => this.suit().status === SuitStatus.HORS_SERVICE
+    || this.suit()?.nextMaintenanceDate < new Date()
   );
   operationnel: Signal<Boolean> = computed(
     () => this.suit().status === SuitStatus.OPERATIONNEL
   );
   tooltipMaintenance: Signal<string> = computed(() => {
+    if (this.suit()?.nextMaintenanceDate < new Date()){
+      return "La date de révision est dépassée !";
+    }
     switch (this.suit().status) {
       case SuitStatus.OPERATIONNEL:
         return 'La combinaison est déjà opérationnelle';

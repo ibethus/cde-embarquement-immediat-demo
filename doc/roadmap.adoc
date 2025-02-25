@@ -8,9 +8,19 @@ Objectifs :
 * On peut avoir des configuration par profil de développeur (back, front, fullstack)
 
 A prévoir :
-* Des bouchons (bdd + service externe)
-* Un back
-* Un front
-* Des données "réelles" (bdd + service externe)
-* Un keycloak
+* Des bouchons (bdd + service externe) OK 
+* Un back OK
+* Un front OK
+* Des données "réelles" (bdd + service externe) (prévoir DNS pour faux env local)
+* Un keycloak OK
 * En option : un pipeline github actions
+
+Outils que l'on souhaite utiliser :
+* devContainers
+* CDE : devpod
+
+2ème semaine :
+* Front : possibilité de faire revenir les combinaisons de mission
+* Mise en place d'un env de dev local complet sur devContainer (toutes dépendances )
+* 
+

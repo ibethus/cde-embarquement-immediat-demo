@@ -13,6 +13,6 @@ public class SpaceSuitBatteryValidator implements SpaceSuitValidator {
     @Override
     public SpaceSuiteValidation checkSpaceSuit(Spacesuits spaceSuit, WeatherReportService.WeatherConditions weatherConditions) {
         return new SpaceSuiteValidation(spaceSuit.batteryLevel > MIN_BATTERY_LEVEL,
-                "Battery level is : " + spaceSuit.batteryLevel + " % (> " + MIN_BATTERY_LEVEL + ")");
+                "Niveau de batterie : " + spaceSuit.batteryLevel + " % (> " + MIN_BATTERY_LEVEL + ")");
     }
 }
