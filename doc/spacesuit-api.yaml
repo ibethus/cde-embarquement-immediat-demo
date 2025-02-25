@@ -46,7 +46,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Spacesuit'
     put:
-      summary: Mettre à jour le statut d'une combinaison
+      summary: Mettre à jour une combinaison
       parameters:
         - name: id
           in: path
@@ -58,7 +58,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/SpacesuitUpdate'
+              $ref: '#/components/schemas/SpacesuitInput'
       responses:
         '200':
           description: Combinaison mise à jour avec succès
@@ -110,11 +110,16 @@ paths:
 components:
   schemas:
     Spacesuit:
+      allOf:
+        - type: object
+          properties:
+            id:
+              type: string
+              format: uuid
+        - $ref: '#/components/schemas/SpacesuitInput'
+    SpacesuitInput:
       type: object
       properties:
-        id:
-          type: string
-          format: uuid
         serialNumber:
           type: string
         status:
@@ -141,43 +146,6 @@ components:
               type: number
               format: float
               description: Température maximale supportée en Celsius
-        lastMaintenanceDate:
-          type: string
-          format: date-time
-        nextMaintenanceDate:
-          type: string
-          format: date-time
-
-    SpacesuitInput:
-      type: object
-      required:
-        - serialNumber
-        - status
-      properties:
-        serialNumber:
-          type: string
-        status:
-          type: string
-          enum: [OPERATIONNEL, EN_MAINTENANCE, HORS_SERVICE, EN_MISSION]
-        oxygenLevel:
-          type: number
-          format: float
-        batteryLevel:
-          type: number
-          format: float
-
-    SpacesuitUpdate:
-      type: object
-      properties:
-        status:
-          type: string
-          enum: [OPERATIONNEL, EN_MAINTENANCE, HORS_SERVICE, EN_MISSION]
-        oxygenLevel:
-          type: number
-          format: float
-        batteryLevel:
-          type: number
-          format: float
         lastMaintenanceDate:
           type: string
           format: date-time
