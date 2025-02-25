@@ -1,18 +1,19 @@
 package org.acme.spacesuites.validation.validators;
 
-import jakarta.enterprise.context.ApplicationScoped;
 import org.acme.spacesuites.SpacesuitesStatus;
 import org.acme.spacesuites.Spacesuits;
 import org.acme.spacesuites.validation.SpaceSuiteValidation;
 import org.acme.weather.WeatherReportService;
 
-import java.util.List;
+import jakarta.enterprise.context.ApplicationScoped;
 
 @ApplicationScoped
 public class SpaceSuitStatusValidator implements SpaceSuitValidator {
 
     @Override
-    public SpaceSuiteValidation checkSpaceSuit(Spacesuits spaceSuit, WeatherReportService.WeatherConditions weatherConditions) {
-        return new SpaceSuiteValidation(spaceSuit.status == SpacesuitesStatus.OPERATIONNEL, "Le statut : " + spaceSuit.status);
+    public SpaceSuiteValidation checkSpaceSuit(Spacesuits spaceSuit,
+            WeatherReportService.WeatherConditions weatherConditions) {
+        return new SpaceSuiteValidation(spaceSuit.status == SpacesuitesStatus.OPERATIONNEL,
+                "Le statut : " + spaceSuit.status);
     }
 }

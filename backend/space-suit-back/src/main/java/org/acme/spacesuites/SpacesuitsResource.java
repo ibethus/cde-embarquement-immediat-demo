@@ -1,5 +1,8 @@
 package org.acme.spacesuites;
 
+import java.util.List;
+import java.util.UUID;
+
 import io.quarkus.hibernate.orm.rest.data.panache.PanacheEntityResource;
 import io.quarkus.panache.common.Page;
 import io.quarkus.panache.common.Sort;
@@ -7,10 +10,6 @@ import io.quarkus.rest.data.panache.ResourceProperties;
 import jakarta.annotation.security.DenyAll;
 import jakarta.annotation.security.RolesAllowed;
 import jakarta.ws.rs.Produces;
-import org.jboss.resteasy.reactive.server.spi.ContentType;
-
-import java.util.List;
-import java.util.UUID;
 
 @DenyAll
 @ResourceProperties
