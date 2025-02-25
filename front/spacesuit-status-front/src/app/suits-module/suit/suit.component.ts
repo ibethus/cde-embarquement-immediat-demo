@@ -12,6 +12,8 @@ import { Suit } from '../model/suit';
 import { SuitStatus } from '../model/suit-status';
 import { SpacesuitApi } from '../service/spacesuit-api';
 import { Router } from '@angular/router';
+import { BoutonSuppressionComponent } from '../bouton-suppression/bouton-suppression.component';
+import { HasRolesDirective } from 'keycloak-angular';
 
 @Component({
   selector: 'app-suit',
@@ -26,6 +28,8 @@ import { Router } from '@angular/router';
     BoutonBatterieComponent,
     BoutonMissionComponent,
     BoutonMaintenanceComponent,
+    BoutonSuppressionComponent,
+    HasRolesDirective,
   ],
   templateUrl: './suit.component.html',
   styleUrls: ['./suit.component.scss'],
@@ -75,6 +79,14 @@ export class SuitComponent {
       updatedSuit.oxygenLevel = 100;
       this.suitService.update(updatedSuit.id, updatedSuit).subscribe({
         next: (_) => this.suit.set(updatedSuit),
+        error: (error) => console.error(error),
+      });
+    }
+  }
+  validateDelete($event: boolean) {
+    if ($event) {
+      this.suitService.delete(this.suit().id).subscribe({
+        next: (_) => this.router.navigate(['/suits/']),
         error: (error) => console.error(error),
       });
     }
