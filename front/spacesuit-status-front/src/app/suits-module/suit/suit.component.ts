@@ -14,6 +14,7 @@ import { SpacesuitApi } from '../service/spacesuit-api';
 import { Router } from '@angular/router';
 import { BoutonSuppressionComponent } from '../bouton-suppression/bouton-suppression.component';
 import { HasRolesDirective } from 'keycloak-angular';
+import { SuitViewerComponent } from "../suit-viewer/suit-viewer.component";
 
 @Component({
   selector: 'app-suit',
@@ -30,7 +31,8 @@ import { HasRolesDirective } from 'keycloak-angular';
     BoutonMaintenanceComponent,
     BoutonSuppressionComponent,
     HasRolesDirective,
-  ],
+    SuitViewerComponent
+],
   templateUrl: './suit.component.html',
   styleUrls: ['./suit.component.scss'],
 })

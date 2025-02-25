@@ -12,6 +12,7 @@ import {
 import { DialogComponent } from '../../dialog/dialog.component';
 import { Validation } from '../model/validation.model';
 import { ValidationApi } from '../service/validation-api.service';
+import { addLinePipe } from "./breakline-pipe";
 
 @Component({
   selector: 'app-validate-mission-dialog',
@@ -20,7 +21,8 @@ import { ValidationApi } from '../service/validation-api.service';
     MatDialogActions,
     MatButton,
     MatProgressSpinnerModule,
-  ],
+    addLinePipe
+],
   templateUrl: './validate-mission-dialog.component.html',
   styleUrl: './validate-mission-dialog.component.less',
 })
