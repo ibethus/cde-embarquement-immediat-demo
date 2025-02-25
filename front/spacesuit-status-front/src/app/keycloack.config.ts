@@ -7,27 +7,27 @@ import {
     AutoRefreshTokenService,
     UserActivityService
   } from 'keycloak-angular';
+import { environment } from '../environments/environment.development';
   
   const localhostCondition = createInterceptorCondition<IncludeBearerTokenCondition>({
-    urlPattern: /^(http:\/\/localhost:8181)(\/.*)?$/i
+    urlPattern: /^.*$/i,
   });
   
   export const provideKeycloakAngular = () =>
     provideKeycloak({
       config: {
-        realm: 'spacesuit',
-        url: 'http://localhost:8080',
-        clientId: 'spacesuit-connect'
+        realm: environment.realm,
+        url: environment.keycloackUrl,
+        clientId: environment.clientId
       },
-      initOptions: {
-        onLoad: 'check-sso',
-        silentCheckSsoRedirectUri: window.location.origin + '/silent-check-sso.html',
+      initOptions: {        
+        onLoad: 'login-required',
         redirectUri: window.location.origin + '/'
       },
       features: [
         withAutoRefreshToken({
           onInactivityTimeout: 'logout',
-          sessionTimeout: 60000
+          sessionTimeout: 100000
         })
       ],
       providers: [
