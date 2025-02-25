@@ -6,6 +6,7 @@ import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { Suit } from '../model/suit';
 import { SpacesuitApi } from '../service/spacesuit-api';
 import { RouterModule } from '@angular/router';
+import { BoutonSuppressionComponent } from '../bouton-suppression/bouton-suppression.component';
 
 @Component({
   selector: 'app-suits',

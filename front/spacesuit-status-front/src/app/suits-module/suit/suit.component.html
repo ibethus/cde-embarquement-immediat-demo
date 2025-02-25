@@ -86,5 +86,6 @@
     <app-bouton-mission [suit]="suit" (validateAction)="validateMission($event)" ></app-bouton-mission>
     <app-bouton-oxygen [suit]="suit" (validateAction)="validateOxygenRefill($event)"></app-bouton-oxygen>
     <app-bouton-batterie [suit]="suit" (validateAction)="validateBatteryRefill($event)"></app-bouton-batterie>
+    <app-bouton-suppression *kaHasRoles="['maintainer']; checkRealm: true" [suit]="suit" (validateAction)="validateDelete($event)"></app-bouton-suppression>
   </div>
 </div>
