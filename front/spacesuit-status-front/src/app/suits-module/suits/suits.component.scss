@@ -3,6 +3,12 @@
 h1 {
   text-align: center;
   color: var(--mat-sys-primary);
+} 
+
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .status-container {

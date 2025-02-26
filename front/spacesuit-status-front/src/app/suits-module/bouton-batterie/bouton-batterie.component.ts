@@ -1,4 +1,4 @@
-import { Component, computed, Input, Signal } from '@angular/core';
+import { Component, computed, input, Input, Signal } from '@angular/core';
 import { MatButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
 import { MatTooltip } from '@angular/material/tooltip';
@@ -14,7 +14,7 @@ import { SuitStatus } from '../model/suit-status';
 })
 export class BoutonBatterieComponent extends OpenDialogBoutonComponent {
   override actionMessage: string = 'Remplacer par une batterie pleine (20€)';
-  @Input() suit!: Signal<Suit>;
+  suit = input.required<Suit>();
 
   maxBattery: Signal<Boolean> = computed(
     () => this.suit().batteryLevel === 100

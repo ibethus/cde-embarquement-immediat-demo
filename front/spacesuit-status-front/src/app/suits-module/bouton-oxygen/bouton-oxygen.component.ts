@@ -1,4 +1,4 @@
-import { Component, computed, Input, Signal } from '@angular/core';
+import { Component, computed, input, Input, Signal } from '@angular/core';
 import { MatButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
 import { MatTooltip } from '@angular/material/tooltip';
@@ -14,7 +14,7 @@ import { SuitStatus } from '../model/suit-status';
 })
 export class BoutonOxygenComponent extends OpenDialogBoutonComponent {
   override actionMessage: string = `Recharger en oxygène`;
-  @Input() suit!: Signal<Suit>;
+  suit = input.required<Suit>();
 
   maxOxygen: Signal<Boolean> = computed(() => this.suit().oxygenLevel === 100);
   isAvailable: Signal<boolean> = computed(
