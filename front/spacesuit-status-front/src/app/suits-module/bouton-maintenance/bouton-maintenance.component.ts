@@ -1,4 +1,4 @@
-import { Component, computed, Input, Signal } from '@angular/core';
+import { Component, computed, input, Input, Signal } from '@angular/core';
 import { MatButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
 import { MatTooltip } from '@angular/material/tooltip';
@@ -13,7 +13,7 @@ import { SuitStatus } from '../model/suit-status';
   styleUrl: './bouton-maintenance.component.less',
 })
 export class BoutonMaintenanceComponent extends OpenDialogBoutonComponent {
-  @Input() suit!: Signal<Suit>;
+  suit = input.required<Suit>();
   override actionMessage = 'Envoyer la combinaison en révision';
 
   horsService: Signal<Boolean> = computed(

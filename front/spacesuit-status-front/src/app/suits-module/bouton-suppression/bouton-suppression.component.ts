@@ -1,4 +1,4 @@
-import { Component, Input, WritableSignal } from '@angular/core';
+import { Component, input, Input, WritableSignal } from '@angular/core';
 import { MatButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
 import { MatTooltip } from '@angular/material/tooltip';
@@ -16,5 +16,5 @@ export class BoutonSuppressionComponent extends OpenDialogBoutonComponent {
   tooltipSupression(): string {
     return this.actionMessage;
   }
-  @Input() suit!: WritableSignal<Suit>;
+  suit = input.required<Suit>();
 }

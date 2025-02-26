@@ -1,4 +1,4 @@
-import { Component, Input, Signal } from '@angular/core';
+import { Component, input, Input, Signal } from '@angular/core';
 import { Suit } from '../model/suit';
 import { CommonModule } from '@angular/common';
 
@@ -9,5 +9,5 @@ import { CommonModule } from '@angular/common';
   styleUrl: './suit-viewer.component.scss',
 })
 export class SuitViewerComponent {
-  @Input() suit!: Signal<Suit>;
+  suit = input.required<Suit>();
 }

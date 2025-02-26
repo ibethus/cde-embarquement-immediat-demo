@@ -1,27 +1,27 @@
 import { CommonModule } from '@angular/common';
 import {
   Component,
-  Inject,
   Input,
   signal,
-  WritableSignal,
+  WritableSignal
 } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { Router } from '@angular/router';
+import { HasRolesDirective } from 'keycloak-angular';
+import { ToastrService } from 'ngx-toastr';
 import { BoutonBatterieComponent } from '../bouton-batterie/bouton-batterie.component';
 import { BoutonMaintenanceComponent } from '../bouton-maintenance/bouton-maintenance.component';
 import { BoutonMissionComponent } from '../bouton-mission/bouton-mission.component';
 import { BoutonOxygenComponent } from '../bouton-oxygen/bouton-oxygen.component';
+import { BoutonSuppressionComponent } from '../bouton-suppression/bouton-suppression.component';
 import { Suit } from '../model/suit';
 import { SuitStatus } from '../model/suit-status';
 import { SpacesuitApi } from '../service/spacesuit-api';
-import { Router } from '@angular/router';
-import { BoutonSuppressionComponent } from '../bouton-suppression/bouton-suppression.component';
-import { HasRolesDirective } from 'keycloak-angular';
 import { SuitViewerComponent } from '../suit-viewer/suit-viewer.component';
-import { ToastrService } from 'ngx-toastr';
+import { MatProgressSpinner } from '@angular/material/progress-spinner';
 
 @Component({
   selector: 'app-suit',
@@ -39,13 +39,18 @@ import { ToastrService } from 'ngx-toastr';
     BoutonSuppressionComponent,
     HasRolesDirective,
     SuitViewerComponent,
+    MatProgressSpinner
   ],
   templateUrl: './suit.component.html',
   styleUrls: ['./suit.component.scss'],
 })
 export class SuitComponent {
   private toastr: ToastrService;
-  constructor(suitService: SpacesuitApi, router: Router, toastr: ToastrService) {
+  constructor(
+    suitService: SpacesuitApi,
+    router: Router,
+    toastr: ToastrService
+  ) {
     this.suitService = suitService;
     this.router = router;
     this.toastr = toastr;
@@ -53,10 +58,12 @@ export class SuitComponent {
   router: Router;
   suitService: SpacesuitApi;
   suit!: WritableSignal<Suit>;
+  loading: WritableSignal<boolean> = signal(true);
   @Input()
   set suitId(suitId: string) {
     this.suitService.getById(suitId).subscribe((suit$) => {
       this.suit = signal(suit$);
+      this.loading.set(false);
     });
   }
 
@@ -107,8 +114,8 @@ export class SuitComponent {
     if ($event) {
       this.suitService.delete(this.suit().id).subscribe({
         next: (_) => {
-          this.toastr.warning("Combinaison supprimée");
-          this.router.navigate(['/suits/']);        
+          this.toastr.warning('Combinaison supprimée');
+          this.router.navigate(['/suits/']);
         },
         error: (error) => console.error(error),
       });
