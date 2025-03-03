@@ -9,8 +9,8 @@
 		}
 	},
 	"postCreateCommand": {
-		"ConfigureNgCompletion": "source <(ng completion script)",
-		"InstallDeps" : "cd front/spacesuit-status-front && npm i"
+		"ConfigureNgCompletion": "ng completion script > ~/.ng-completion && source ~/.ng-completion",
+		"InstallDeps": "cd front/spacesuit-status-front && npm i"
 	},
 	"forwardPorts": [ 4200, 8080, 3000 ],
 	"customizations": {
