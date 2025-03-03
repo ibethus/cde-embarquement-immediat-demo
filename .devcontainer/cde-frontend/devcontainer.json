@@ -1,6 +1,6 @@
 {
 	"name": "Spacesuits CDE frontend",
-	"dockerComposeFile": "../docker-compose.yml",
+	"dockerComposeFile": "../cde/docker-compose.yml",
 	"service": "devcontainer",
 	"workspaceFolder": "/workspace",
 	"features": {
