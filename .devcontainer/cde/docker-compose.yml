@@ -22,7 +22,7 @@ services:
       retries: 15
     command: ["start-dev", "--import-realm", "--http-port", "8080"]
     volumes:
-      - ../backend/space-suit-back/src/main/resources:/opt/keycloak/data/import
+      - ../../backend/space-suit-back/src/main/resources:/opt/keycloak/data/import
     network_mode: service:devcontainer
 
   mockoon:
