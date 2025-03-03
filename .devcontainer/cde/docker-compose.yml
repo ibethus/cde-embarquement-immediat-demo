@@ -12,23 +12,20 @@ services:
       KC_HOSTNAME_STRICT_HTTPS: "false"
       KC_PROXY: "edge"
       KC_HTTP_RELATIVE_PATH: "/auth"
+      KC_HOSTNAME_URL: "${CODESPACE_NAME}-8080.app.github.dev"
+      KC_HOSTNAME_ADMIN_URL: "${CODESPACE_NAME}-8080.app.github.dev"
       KEYCLOAK_ADMIN: admin
       KEYCLOAK_ADMIN_PASSWORD: admin
       KC_HEALTH_ENABLED: "true"
       KC_LOG_LEVEL: info
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8080/health/ready"]
-      interval: 15s
-      timeout: 2s
-      retries: 15
-    command: ["start-dev", "--http-port", "8080", --import-realm]
+    command: [ "start-dev", "--http-port", "8080", "--import-realm", "--hostname-url=${CODESPACE_NAME}-8080.app.github.dev" ]
     volumes:
       - ../backend/space-suit-back/src/main/resources:/opt/keycloak/data/import
     network_mode: service:devcontainer
 
   mockoon:
     image: mockoon/cli:9
-    entrypoint: ["mockoon-cli", "start", "--disable-log-to-file", "-d", "/data", "-p", "3000"]
+    entrypoint: [ "mockoon-cli", "start", "--disable-log-to-file", "-d", "/data", "-p", "3000" ]
     volumes:
       - ../front/mocks/backend-mocks.json:/data
     network_mode: service:devcontainer
