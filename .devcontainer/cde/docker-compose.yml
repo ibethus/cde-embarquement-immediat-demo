@@ -11,9 +11,9 @@ services:
       KC_HOSTNAME_STRICT: "false"
       KC_HOSTNAME_STRICT_HTTPS: "false"
       KC_PROXY: "edge"
-      #KC_HTTP_RELATIVE_PATH: "/auth"
+      KC_HTTP_RELATIVE_PATH: "/auth"
       PROXY_ADDRESS_FORWARDING: "true"
-      #KEYCLOAK_FRONTEND_URL: "${CODESPACE_NAME}/auth"
+      KEYCLOAK_FRONTEND_URL: "${CODESPACE_NAME}/auth"
       KEYCLOAK_ADMIN: admin
       KEYCLOAK_ADMIN_PASSWORD: admin
       KC_HEALTH_ENABLED: "true"
