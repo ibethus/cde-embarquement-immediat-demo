@@ -8,29 +8,19 @@ services:
   keycloak:
     image: quay.io/keycloak/keycloak:26.1.2
     environment:
-      KC_HOSTNAME_STRICT: "false"
-      KC_HOSTNAME_STRICT_HTTPS: "false"
-      KC_PROXY: "edge"
-      KC_HTTPS_ENABLED: "true"
-      KC_HTTP_PORT: "8080"
-      KC_HTTP_RELATIVE_PATH: "/auth"
-      PROXY_ADDRESS_FORWARDING: "true"
-      KC_HOSTNAME_URL: "https://${CODESPACE_NAME}-8080.${GITHUB_CODESPACES_PORT_FORWARDING_DOMAIN}"
-      KC_HOSTNAME_ADMIN_URL: "https://${CODESPACE_NAME}-8080.${GITHUB_CODESPACES_PORT_FORWARDING_DOMAIN}"
+      KC_HOSTNAME: "http://${CODESPACE_NAME}-8080.${GITHUB_CODESPACES_PORT_FORWARDING_DOMAIN}"
+      #KC_HOSTNAME_PORT: 8080
+      KC_HOSTNAME_STRICT_BACKCHANNEL: "true"
       KEYCLOAK_ADMIN: admin
       KEYCLOAK_ADMIN_PASSWORD: admin
       KC_HEALTH_ENABLED: "true"
       KC_LOG_LEVEL: info
-    command: [
-      "start",
-      "--import-realm",
-      "--proxy=edge"
-    ]
     healthcheck:
-      test: [ "CMD", "curl", "-f", "http://localhost:8080/auth/health/ready" ]
+      test: ["CMD", "curl", "-f", "http://localhost:8080/health/ready"]
       interval: 15s
       timeout: 2s
       retries: 15
+    command: ["start-dev", "--http-port", "8080", --import-realm]
     volumes:
       - ../backend/space-suit-back/src/main/resources:/opt/keycloak/data/import
     network_mode: service:devcontainer
