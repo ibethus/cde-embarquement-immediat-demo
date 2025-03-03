@@ -14,16 +14,16 @@
 	"forwardPorts": [ 4200, 8080, 3000 ],
   "portsAttributes": {
     "3000": {
-      label: "Mockoon",
-      protocol: "https"
+      "label": "Mockoon",
+      "protocol": "https"
     },
     "4200": {
-      label: "Angular",
-      protocol: "https"
+      "label": "Angular",
+      "protocol": "https"
     },
     "8080": {
-      label: "Keycloak",
-      protocol: "https"
+      "label": "Keycloak",
+      "protocol": "https"
     }
   },
 	"customizations": {

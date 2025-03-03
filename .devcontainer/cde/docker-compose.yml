@@ -34,5 +34,5 @@ services:
     image: mockoon/cli:9
     entrypoint: [ "mockoon-cli", "start", "--disable-log-to-file", "-d", "/data", "-p", "3000" ]
     volumes:
-      - ../front/mocks/backend-mocks.json:/data
+      - ../../front/mocks/backend-mocks.json:/data
     network_mode: service:devcontainer
