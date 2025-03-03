@@ -2,7 +2,7 @@
 	"name": "Spacesuits CDE frontend",
 	"dockerComposeFile": "../cde/docker-compose.yml",
 	"service": "devcontainer",
-	"workspaceFolder": "/workspace",
+	"workspaceFolder": "/workspaces",
 	"features": {
 		"ghcr.io/devcontainers-extra/features/angular-cli:2": {
 			"version": "latest"

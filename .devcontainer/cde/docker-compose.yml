@@ -10,12 +10,9 @@ services:
     environment:
       KC_HOSTNAME_STRICT: "false"
       KC_HOSTNAME_STRICT_HTTPS: "false"
+      KC_HOSTNAME: "https://${CODESPACE_NAME}-8080.${GITHUB_CODESPACES_PORT_FORWARDING_DOMAIN}"
       KC_PROXY: "edge"
-      KC_HTTP_RELATIVE_PATH: "/auth"
       KC_HTTP_ENABLE: "true"
-      PROXY_ADDRESS_FORWARDING: "true"
-      KC_HOSTNAME_URL: "https://${CODESPACE_NAME}-8080.${GITHUB_CODESPACES_PORT_FORWARDING_DOMAIN}"
-      KC_HOSTNAME_ADMIN_URL: "https://${CODESPACE_NAME}-8080.${GITHUB_CODESPACES_PORT_FORWARDING_DOMAIN}"
       KEYCLOAK_ADMIN: admin
       KEYCLOAK_ADMIN_PASSWORD: admin
       KC_HEALTH_ENABLED: "true"
@@ -27,6 +24,11 @@ services:
       "--hostname-strict=false",
       "--proxy-headers forwarded"
     ]
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "https://${CODESPACE_NAME}-8080.${GITHUB_CODESPACES_PORT_FORWARDING_DOMAIN}/auth/health/ready" ]
+      interval: 15s
+      timeout: 2s
+      retries: 15
     volumes:
       - ../backend/space-suit-back/src/main/resources:/opt/keycloak/data/import
     network_mode: service:devcontainer
