@@ -22,7 +22,6 @@ services:
       "--http-port=8080",
       "--import-realm",
       "--hostname-strict=false",
-      "--proxy-headers forwarded"
     ]
     healthcheck:
       test: [ "CMD", "curl", "-f", "https://${CODESPACE_NAME}-8080.${GITHUB_CODESPACES_PORT_FORWARDING_DOMAIN}/auth/health/ready" ]
