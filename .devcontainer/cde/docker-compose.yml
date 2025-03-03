@@ -2,7 +2,7 @@ services:
   devcontainer:
     image: node:22
     volumes:
-      - ..:/workspace:cached
+      - ../..:/workspace:cached
     command: sleep infinity
 
   keycloak:
