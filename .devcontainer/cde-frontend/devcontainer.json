@@ -1,0 +1,25 @@
+{
+	"name": "Spacesuits CDE frontend",
+	"dockerComposeFile": "../docker-compose.yml",
+	"service": "devcontainer",
+	"workspaceFolder": "/workspace",
+	"features": {
+		"ghcr.io/devcontainers-extra/features/angular-cli:2": {
+			"version": "latest"
+		}
+	},
+	"postCreateCommand": {
+		"InstallDeps": "cd front/spacesuit-status-front && npm i"
+	},
+	"forwardPorts": [ 4200, 8080, 3000 ],
+	"customizations": {
+	  "vscode": {
+		"settings": {
+		  "editor.tabSize": 2
+		},
+		"extensions": [
+		  "Angular.ng-template"
+		]
+	  }
+	}
+}
