@@ -1,0 +1,23 @@
+{
+	"name": "Spacesuits dev container - demo 2",
+	"image": "node:22",
+	"features": {
+		"ghcr.io/devcontainers-extra/features/angular-cli:2": {},
+		"ghcr.io/devcontainers/features/docker-in-docker:2": {}
+	},
+	"postCreateCommand": {
+		"InstallDeps": "cd spacesuit-status-front && npm i",
+		"StartServices": "docker-compose up -d"
+	},
+	"forwardPorts": [ 4200, 8080, 3000 ],
+	"customizations": {
+	  "vscode": {
+		"settings": {
+		  "editor.tabSize": 2
+		},
+		"extensions": [
+		  "Angular.ng-template"
+		]
+	  }
+	}
+}
