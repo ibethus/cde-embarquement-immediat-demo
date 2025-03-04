@@ -10,7 +10,7 @@ services:
       KC_HEALTH_ENABLED: "true"
       KC_LOG_LEVEL: info
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8080/health/ready"]
+      test: ["CMD", "curl", "-f", "http://localhost:9000/health/ready"]
       interval: 15s
       timeout: 2s
       retries: 15
@@ -19,6 +19,7 @@ services:
       - ./backend/space-suit-back/src/main/resources:/opt/keycloak/data/import
     ports:
       - 8080:8080
+      - 9000:9000
 
   mockoon:
     image: mockoon/cli:9
