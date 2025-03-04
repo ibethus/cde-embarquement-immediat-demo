@@ -6,7 +6,7 @@
 		"ghcr.io/devcontainers/features/docker-in-docker:2": {}
 	},
 	"postCreateCommand": {
-		"InstallDeps": "cd spacesuit-status-front && npm i",
+		"InstallDeps": "cd front/spacesuit-status-front && npm i",
 		"StartServices": "docker-compose up -d"
 	},
 	"forwardPorts": [ 4200, 8080, 3000 ],

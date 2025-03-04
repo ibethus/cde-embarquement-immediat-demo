@@ -1,14 +1,8 @@
 services:
-  devcontainer:
-    image: node:22
-    volumes:
-      - ../..:/workspace:cached
-    command: sleep infinity
-
   keycloak:
     image: quay.io/keycloak/keycloak:26.1.2
     environment:
-      KC_HOSTNAME: "https://${CODESPACE_NAME}-8080.${GITHUB_CODESPACES_PORT_FORWARDING_DOMAIN}"
+      KC_HOSTNAME: localhost
       KC_HOSTNAME_PORT: 8080
       KC_HOSTNAME_STRICT_BACKCHANNEL: "true"
       KEYCLOAK_ADMIN: admin
@@ -22,12 +16,12 @@ services:
       retries: 15
     command: [ "start-dev", "--http-port", "8080", "--import-realm" ]
     volumes:
-      - ../../backend/space-suit-back/src/main/resources:/opt/keycloak/data/import
+      - ../backend/space-suit-back/src/main/resources/realm.json:/opt/keycloak/data/import
     network_mode: service:devcontainer
 
   mockoon:
     image: mockoon/cli:9
     entrypoint: [ "mockoon-cli", "start", "--disable-log-to-file", "-d", "/data", "-p", "3000" ]
     volumes:
-      - ../../front/mocks/backend-mocks.json:/data
+      - ../front/mocks/backend-mocks.json:/data
     network_mode: service:devcontainer
