@@ -7,7 +7,8 @@
 	},
 	"postCreateCommand": {
 		"InstallDeps": "cd front/spacesuit-status-front && npm i",
-		"StartServices": "docker-compose up -d"
+		"StartServicesCompose": "docker-compose up -d",
+		"StartServiceMockoon": "docker run -d --mount type=bind,source=../front/mocks/backend-mocks.json,target=/data,readonly -p 3001:3000 mockoon/cli:9 --data data --port 3000"
 	},
 	"forwardPorts": [ 4200, 8080, 3000 ],
 	"customizations": {
