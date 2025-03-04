@@ -9,7 +9,7 @@
 		"InstallDeps": "cd front/spacesuit-status-front && npm i",
 		"StartServicesCompose": "docker-compose up -d"
 	},
-	// "forwardPorts": [ 4200, 8080, 3000 ],
+	"forwardPorts": [ 8080, 3000 ],
 	"customizations": {
 	  "vscode": {
 		"settings": {
