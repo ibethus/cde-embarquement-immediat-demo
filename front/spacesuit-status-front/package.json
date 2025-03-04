@@ -27,6 +27,7 @@
     "keycloak-js": "^26.1.2",
     "ngx-toastr": "^19.0.0",
     "rxjs": "~7.8.0",
+    "spacesuit-status-front": "file:",
     "tslib": "^2.3.0",
     "zone.js": "~0.15.0"
   },

@@ -2,7 +2,7 @@ services:
   devcontainer:
     image: node:22
     volumes:
-      - ..:/workspace:cached
+      - ../..:/workspace:cached
     command: sleep infinity
 
   keycloak:
@@ -20,14 +20,14 @@ services:
       interval: 15s
       timeout: 2s
       retries: 15
-    command: ["start-dev", "--http-port", "8080", --import-realm]
+    command: [ "start-dev", "--http-port", "8080", "--import-realm" ]
     volumes:
-      - ../backend/space-suit-back/src/main/resources:/opt/keycloak/data/import
+      - ../../backend/space-suit-back/src/main/resources:/opt/keycloak/data/import
     network_mode: service:devcontainer
 
   mockoon:
     image: mockoon/cli:9
-    entrypoint: ["mockoon-cli", "start", "--disable-log-to-file", "-d", "/data", "-p", "3000"]
+    entrypoint: [ "mockoon-cli", "start", "--disable-log-to-file", "-d", "/data", "-p", "3000" ]
     volumes:
-      - ../front/mocks/backend-mocks.json:/data
+      - ../../front/mocks/backend-mocks.json:/data
     network_mode: service:devcontainer

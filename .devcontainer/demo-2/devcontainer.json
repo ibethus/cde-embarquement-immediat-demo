@@ -1,5 +1,5 @@
 {
-	"name": "Spacesuits dev container",
+	"name": "Spacesuits dev container - demo 2",
 	"dockerComposeFile": "docker-compose.yml",
 	"service": "devcontainer",
 	"workspaceFolder": "/workspace",
