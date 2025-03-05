@@ -1,0 +1,35 @@
+.status-operational,
+.status-active {
+  .s6 {
+    fill: var(--green);
+  }
+}
+
+.status-maintenance {
+  .s6 {
+    fill: var(--orange);
+  }
+}
+
+.status-outoforder {
+  .s6 {
+    fill: var(--red);
+  }
+}
+.status-low-battery {
+  #battery {
+    animation: blink 1s ease 0s infinite;
+  }
+}
+
+.status-low-oxygen {
+  #oxygen {
+    animation: blink 1s ease 0s infinite;
+  }
+}
+
+@keyframes blink {
+  50% {
+    fill: rgba($color: #232234, $alpha: 1.0);
+  }
+}

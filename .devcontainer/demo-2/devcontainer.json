@@ -1,0 +1,43 @@
+{
+	"name": "Spacesuits dev container - demo 2",
+	"dockerComposeFile": "docker-compose.yml",
+	"service": "devcontainer",
+	"workspaceFolder": "/workspace",
+	"features": {
+		"ghcr.io/devcontainers-extra/features/angular-cli:2": {
+			"version": "latest"
+		}
+	},
+	"postCreateCommand": {
+		"InstallDeps": "cd front/spacesuit-status-front && npm i"
+	},
+	"forwardPorts": [
+		4200,
+		8080,
+		3000
+	],
+	"portsAttributes": {
+		"3000": {
+			"label": "Mockoon",
+			"protocol": "http"
+		},
+		"4200": {
+			"label": "Angular",
+			"protocol": "http"
+		},
+		"8080": {
+			"label": "Keycloak",
+			"protocol": "http"
+		}
+	},
+	"customizations": {
+		"vscode": {
+			"settings": {
+				"editor.tabSize": 2
+			},
+			"extensions": [
+				"Angular.ng-template"
+			]
+		}
+	}
+}

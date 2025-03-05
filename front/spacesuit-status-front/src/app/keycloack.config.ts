@@ -22,7 +22,7 @@ import {
         clientId: environment.clientId
       },
       initOptions: {        
-        onLoad: 'login-required',
+        onLoad: 'check-sso',
         redirectUri: window.location.origin + '/'
       },
       features: [

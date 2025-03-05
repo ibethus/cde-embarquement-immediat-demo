@@ -9,190 +9,6 @@
   "folders": [],
   "routes": [
     {
-      "uuid": "c949e097-b9b8-4ad1-a585-4c0bb152d9bc",
-      "type": "http",
-      "documentation": "Récupérer la liste des combinaisons",
-      "method": "get",
-      "endpoint": "spacesuits",
-      "responses": [
-        {
-          "uuid": "767be556-b6c8-4e31-b735-c7f3f73a3c2b",
-          "body": "[\n  {{#repeat 20 comma=true}}\n  {\n    \"id\": \"{{faker 'string.uuid'}}\",\n    \"serialNumber\": \"{{faker 'string.alphanumeric' 12}}\",\n    \"status\": \"{{oneOf (array 'OPERATIONNEL' 'EN_MAINTENANCE' 'HORS_SERVICE')}}\",\n    \"oxygenLevel\": {{faker 'number.int' min=10 max=100}},\n    \"batteryLevel\": {{faker 'number.int' min=10 max=100}},\n    \"temperatureRange\": {\n      \"min\": {{faker 'number.int' min=10 max=50}},\n      \"max\": {{faker 'number.int' min=50 max=200}}\n    },\n    \"lastMaintenanceDate\": \"{{faker 'date.past' 365}}\",\n    \"nextMaintenanceDate\": \"{{faker 'date.future' 365}}\"\n  }\n  {{/repeat}}\n]",
-          "latency": 0,
-          "statusCode": 200,
-          "label": "Liste des combinaisons récupérée avec succès",
-          "headers": [
-            {
-              "key": "Content-Type",
-              "value": "application/json"
-            },
-            {
-              "key": "Access-Control-Allow-Origin",
-              "value": "*"
-            }
-          ],
-          "bodyType": "INLINE",
-          "filePath": "",
-          "databucketID": "",
-          "sendFileAsBody": false,
-          "rules": [],
-          "rulesOperator": "OR",
-          "disableTemplating": false,
-          "fallbackTo404": false,
-          "default": true,
-          "crudKey": "id",
-          "callbacks": []
-        }
-      ],
-      "responseMode": null,
-      "streamingMode": null,
-      "streamingInterval": 0
-    },
-    {
-      "uuid": "71a96822-61be-4065-b59d-ec4be740ad7a",
-      "type": "http",
-      "documentation": "Créer une nouvelle combinaison",
-      "method": "post",
-      "endpoint": "spacesuits",
-      "responses": [
-        {
-          "uuid": "efecc451-be41-432e-bcde-c696f3d04c90",
-          "body": "",
-          "latency": 0,
-          "statusCode": 201,
-          "label": "Combinaison créée avec succès",
-          "headers": [
-            {
-              "key": "Content-Type",
-              "value": "application/json"
-            }
-          ],
-          "bodyType": "INLINE",
-          "filePath": "",
-          "databucketID": "",
-          "sendFileAsBody": false,
-          "rules": [],
-          "rulesOperator": "OR",
-          "disableTemplating": false,
-          "fallbackTo404": false,
-          "default": true,
-          "crudKey": "id",
-          "callbacks": []
-        }
-      ],
-      "responseMode": null,
-      "streamingMode": null,
-      "streamingInterval": 0
-    },
-    {
-      "uuid": "6d13f1dd-83d1-4c08-84d7-5bbb7b04a9d5",
-      "type": "http",
-      "documentation": "Récupérer une combinaison par son ID",
-      "method": "get",
-      "endpoint": "spacesuits/:id",
-      "responses": [
-        {
-          "uuid": "4e537ef7-1572-4128-b9e6-fc7ea5d95a4b",
-          "body": "{\n  \"id\": \"{{urlParam 'id'}}\",\n  \"serialNumber\": \"{{faker 'string.alphanumeric' 12}}\",\n  \"status\": \"{{oneOf (array 'OPERATIONNEL' 'EN_MAINTENANCE' 'HORS_SERVICE')}}\",\n  \"oxygenLevel\": {{faker 'number.int' min=10 max=100}},\n  \"batteryLevel\": {{faker 'number.int' min=10 max=100}},\n  \"temperatureRange\": {\n    \"min\": {{faker 'number.int' min=10 max=50}},\n    \"max\": {{faker 'number.int' min=50 max=200}}\n  },\n  \"lastMaintenanceDate\": \"{{faker 'date.past' 365}}\",\n  \"nextMaintenanceDate\": \"{{faker 'date.future' 365}}\"\n}",
-          "latency": 0,
-          "statusCode": 200,
-          "label": "Combinaison trouvée",
-          "headers": [
-            {
-              "key": "Content-Type",
-              "value": "application/json"
-            }
-          ],
-          "bodyType": "INLINE",
-          "filePath": "",
-          "databucketID": "",
-          "sendFileAsBody": false,
-          "rules": [],
-          "rulesOperator": "OR",
-          "disableTemplating": false,
-          "fallbackTo404": false,
-          "default": true,
-          "crudKey": "id",
-          "callbacks": []
-        }
-      ],
-      "responseMode": null,
-      "streamingMode": null,
-      "streamingInterval": 0
-    },
-    {
-      "uuid": "144f30ed-1466-46b6-a4b0-9ed2cf00ff5c",
-      "type": "http",
-      "documentation": "Mettre à jour le statut d'une combinaison",
-      "method": "put",
-      "endpoint": "spacesuits/:id",
-      "responses": [
-        {
-          "uuid": "25dc6b3e-085d-4122-a730-64d305994bdc",
-          "body": "",
-          "latency": 0,
-          "statusCode": 200,
-          "label": "Combinaison mise à jour avec succès",
-          "headers": [
-            {
-              "key": "Content-Type",
-              "value": "application/json"
-            }
-          ],
-          "bodyType": "INLINE",
-          "filePath": "",
-          "databucketID": "",
-          "sendFileAsBody": false,
-          "rules": [],
-          "rulesOperator": "OR",
-          "disableTemplating": false,
-          "fallbackTo404": false,
-          "default": true,
-          "crudKey": "id",
-          "callbacks": []
-        }
-      ],
-      "responseMode": null,
-      "streamingMode": null,
-      "streamingInterval": 0
-    },
-    {
-      "uuid": "3d970612-26be-45c6-8e1a-801ea99d20d6",
-      "type": "http",
-      "documentation": "Supprimer une combinaison",
-      "method": "delete",
-      "endpoint": "spacesuits/:id",
-      "responses": [
-        {
-          "uuid": "dc69ae57-953d-4f19-9669-93892b23bef9",
-          "body": "",
-          "latency": 0,
-          "statusCode": 204,
-          "label": "Combinaison supprimée avec succès",
-          "headers": [
-            {
-              "key": "Content-Type",
-              "value": "application/json"
-            }
-          ],
-          "bodyType": "INLINE",
-          "filePath": "",
-          "databucketID": "",
-          "sendFileAsBody": false,
-          "rules": [],
-          "rulesOperator": "OR",
-          "disableTemplating": false,
-          "fallbackTo404": false,
-          "default": true,
-          "crudKey": "id",
-          "callbacks": []
-        }
-      ],
-      "responseMode": null,
-      "streamingMode": null,
-      "streamingInterval": 0
-    },
-    {
       "uuid": "e9c97860-ae72-4701-9d6a-28a370add12a",
       "type": "http",
       "documentation": "Valider qu'une combinaison est prête pour une sortie extérieure",
@@ -209,10 +25,6 @@
             {
               "key": "Content-Type",
               "value": "application/json"
-            },
-            {
-              "key": "Access-Control-Allow-Origin",
-              "value": "*"
             }
           ],
           "bodyType": "INLINE",
@@ -269,12 +81,7 @@
           "latency": 120,
           "statusCode": 200,
           "label": "",
-          "headers": [
-            {
-              "key": "Access-Control-Allow-Origin",
-              "value": "*"
-            }
-          ],
+          "headers": [],
           "bodyType": "DATABUCKET",
           "filePath": "",
           "databucketID": "nudt",
@@ -294,26 +101,6 @@
     }
   ],
   "rootChildren": [
-    {
-      "type": "route",
-      "uuid": "c949e097-b9b8-4ad1-a585-4c0bb152d9bc"
-    },
-    {
-      "type": "route",
-      "uuid": "71a96822-61be-4065-b59d-ec4be740ad7a"
-    },
-    {
-      "type": "route",
-      "uuid": "6d13f1dd-83d1-4c08-84d7-5bbb7b04a9d5"
-    },
-    {
-      "type": "route",
-      "uuid": "144f30ed-1466-46b6-a4b0-9ed2cf00ff5c"
-    },
-    {
-      "type": "route",
-      "uuid": "3d970612-26be-45c6-8e1a-801ea99d20d6"
-    },
     {
       "type": "route",
       "uuid": "e9c97860-ae72-4701-9d6a-28a370add12a"
@@ -336,7 +123,20 @@
     "passphrase": ""
   },
   "cors": true,
-  "headers": [],
+  "headers": [
+    {
+      "key": "Access-Control-Allow-Origin",
+      "value": "*"
+    },
+    {
+      "key": "Access-Control-Allow-Methods",
+      "value": "GET,POST,PUT,PATCH,DELETE,HEAD,OPTIONS"
+    },
+    {
+      "key": "Access-Control-Allow-Headers",
+      "value": "Content-Type, Origin, Accept, Authorization, Content-Length, X-Requested-With"
+    }
+  ],
   "proxyReqHeaders": [
     {
       "key": "",

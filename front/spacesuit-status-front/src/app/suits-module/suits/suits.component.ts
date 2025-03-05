@@ -1,20 +1,37 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  signal,
+  ViewChild,
+  WritableSignal,
+} from '@angular/core';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import {
+  MatProgressSpinner
+} from '@angular/material/progress-spinner';
 import { MatSort, MatSortModule } from '@angular/material/sort';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
+import { RouterModule } from '@angular/router';
 import { Suit } from '../model/suit';
 import { SpacesuitApi } from '../service/spacesuit-api';
-import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-suits',
   standalone: true,
-  imports: [CommonModule, MatTableModule, MatProgressBarModule, MatSortModule, RouterModule],
+  imports: [
+    CommonModule,
+    MatTableModule,
+    MatProgressBarModule,
+    MatSortModule,
+    RouterModule,
+    MatProgressSpinner,
+  ],
   templateUrl: './suits.component.html',
   styleUrl: './suits.component.scss',
 })
 export class SuitsComponent implements OnInit {
+  loading: WritableSignal<boolean> = signal(true);
   @ViewChild(MatSort) sort!: MatSort;
   suits = new MatTableDataSource<Suit>();
   displayedColumns: string[] = [
@@ -49,6 +66,7 @@ export class SuitsComponent implements OnInit {
     this.suitService.getAll().subscribe((data) => {
       this.suits.data = data;
       this.suits.sort = this.sort;
+      this.loading.set(false);
     });
   }
 }

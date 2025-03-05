@@ -84,9 +84,20 @@
                   "with": "src/environments/environment.staging.ts"
                 }
               ]
+            },
+            "cdefrontend": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.cdefrontend.ts"
+                }
+              ]
             }
           },
-          "defaultConfiguration": "production"
+          "defaultConfiguration": "development"
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
@@ -99,9 +110,15 @@
             },
             "staging": {
               "buildTarget": "spacesuit-status-front:build:staging"
+            },
+            "cdefrontend": {
+              "buildTarget": "spacesuit-status-front:build:cdefrontend"
             }
           },
-          "defaultConfiguration": "production"
+          "defaultConfiguration": "development",
+          "options": {
+            "host": "0.0.0.0"
+          }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n"

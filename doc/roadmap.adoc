@@ -21,8 +21,8 @@ Outils que l'on souhaite utiliser :
 
 2ème semaine :
 * Front : possibilité de faire revenir les combinaisons de mission
-* Front : images de combi
-* Front : messages de recap validation à afficher
+* Front : images de combi OK
+* Front : messages de recap validation à afficher OK
+* Front suppression d'une combinaison OK
 * Mise en place d'un env de dev local complet sur devContainer (toutes dépendances )
-* 
 

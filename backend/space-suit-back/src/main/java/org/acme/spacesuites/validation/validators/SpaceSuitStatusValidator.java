@@ -14,6 +14,6 @@ public class SpaceSuitStatusValidator implements SpaceSuitValidator {
     public SpaceSuiteValidation checkSpaceSuit(Spacesuits spaceSuit,
             WeatherReportService.WeatherConditions weatherConditions) {
         return new SpaceSuiteValidation(spaceSuit.status == SpacesuitesStatus.OPERATIONNEL,
-                "Le statut : " + spaceSuit.status);
+                "Statut : " + spaceSuit.status);
     }
 }

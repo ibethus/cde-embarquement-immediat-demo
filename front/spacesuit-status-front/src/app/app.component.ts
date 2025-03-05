@@ -9,5 +9,5 @@ import { HeaderComponent } from './header/header.component';
   styleUrl: './app.component.less',
 })
 export class AppComponent {
-  title = 'Spacesuit Status';
+  title = 'Spacesuit Manager';
 }

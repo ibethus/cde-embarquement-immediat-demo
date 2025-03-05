@@ -1,4 +1,4 @@
-import { Component, computed, Input, Signal } from '@angular/core';
+import { Component, computed, input, Input, Signal } from '@angular/core';
 import { MatButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
 import { MatTooltip } from '@angular/material/tooltip';
@@ -14,7 +14,7 @@ import { OpenDialogBoutonComponent } from '../../open-dialog-bouton/open-dialog-
 })
 export class BoutonMissionComponent extends OpenDialogBoutonComponent {
   override actionMessage: string = 'Envoyer la combinaison en mission';
-  @Input() suit!: Signal<Suit>;
+  suit = input.required<Suit>();
   horsService: Signal<Boolean> = computed(
     () => this.suit().status === SuitStatus.HORS_SERVICE
   );

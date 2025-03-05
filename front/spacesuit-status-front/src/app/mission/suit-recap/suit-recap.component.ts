@@ -13,6 +13,7 @@ import { Suit } from '../../suits-module/model/suit';
 import { SuitStatus } from '../../suits-module/model/suit-status';
 import { SpacesuitApi } from '../../suits-module/service/spacesuit-api';
 import { ValidateMissionButtonComponent } from '../validate-mission-button/validate-mission-button.component';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-suit-recap',
@@ -27,9 +28,11 @@ import { ValidateMissionButtonComponent } from '../validate-mission-button/valid
   styleUrl: './suit-recap.component.scss',
 })
 export class SuitRecapComponent {
-  constructor(suitService: SpacesuitApi) {
+  constructor(suitService: SpacesuitApi, toastr: ToastrService) {
     this.suitService = suitService;
+    this.toastr = toastr;
   }
+  toastr: ToastrService;
   suitService: SpacesuitApi;
   @Input() suit!: WritableSignal<Suit>;
   missionSelected = input<number>();
@@ -41,7 +44,10 @@ export class SuitRecapComponent {
       let updatedSuit: Suit = { ...this.suit() };
       updatedSuit.status = SuitStatus.EN_MISSION;
       this.suitService.update(updatedSuit.id, updatedSuit).subscribe({
-        next: (_) => this.suit.set(updatedSuit),
+        next: (_) => {
+          this.suit.set(updatedSuit);
+          this.toastr.success("Vers l'infini et au-delà !")
+        },
         error: (error) => console.error(error),
       });
     }
