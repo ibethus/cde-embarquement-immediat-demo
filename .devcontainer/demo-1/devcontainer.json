@@ -1,5 +1,5 @@
 {
-	"name": "Spacesuits dev container - demo 1",
+	"name": "1 - Spacesuits dev container",
 	"image": "node:22",
 
 	// Additional features
@@ -13,6 +13,7 @@
 	"postCreateCommand": {
 		"InstallDeps": "cd front/spacesuit-status-front && npm i"
 	},
+	"forwardPorts": [ 4200 ],
 	"portsAttributes": {
 		"4200": {
 			"label": "Angular",

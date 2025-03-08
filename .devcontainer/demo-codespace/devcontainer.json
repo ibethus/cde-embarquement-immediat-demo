@@ -1,26 +1,27 @@
 {
-	"name": "Spacesuits dev container - demo codespace",
+	"name": "4 - Spacesuits dev container - codespace",
 	"dockerComposeFile": "docker-compose.yml",
 	"service": "devcontainer",
 	"workspaceFolder": "/workspace",
+
+	// Additional features
 	"features": {
 		"ghcr.io/devcontainers-extra/features/angular-cli:2": {
-			"version": "latest"
+			"version": "19.2.1"
 		}
 	},
+
+	// Init & config
 	"postCreateCommand": {
 		"InstallDeps": "cd front/spacesuit-status-front && npm i"
 	},
 	"forwardPorts": [
 		4200,
 		8080,
+		9000,
 		3000
 	],
 	"portsAttributes": {
-		"3000": {
-			"label": "Mockoon",
-			"protocol": "http"
-		},
 		"4200": {
 			"label": "Angular",
 			"protocol": "http"
@@ -28,15 +29,26 @@
 		"8080": {
 			"label": "Keycloak",
 			"protocol": "http"
+		},
+		"9000": {
+			"label": "Keycloak - Health",
+			"protocol": "http"
+		},
+		"3000": {
+			"label": "Mockoon",
+			"protocol": "http"
 		}
 	},
+
+	// IDE customizations
 	"customizations": {
 		"vscode": {
 			"settings": {
 				"editor.tabSize": 2
 			},
 			"extensions": [
-				"Angular.ng-template"
+				"Angular.ng-template",
+				"ms-azuretools.vscode-docker"
 			]
 		}
 	}
