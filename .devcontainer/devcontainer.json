@@ -1,5 +1,5 @@
 {
-	"name": "Spacesuits dev container - demo 2",
+	"name": "Spacesuits dev container - demo devpod",
 	"image": "node:22",
 	"features": {
 		"ghcr.io/devcontainers-extra/features/angular-cli:2": {},
