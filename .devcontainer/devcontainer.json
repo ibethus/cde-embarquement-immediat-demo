@@ -37,14 +37,18 @@
 
 	// IDE customizations
 	"customizations": {
-	  "vscode": {
-		"settings": {
-		  "editor.tabSize": 2
-		},
-		"extensions": [
-			"Angular.ng-template",
-			"ms-azuretools.vscode-docker"
-		]
-	  }
+		"vscode": {
+			"settings": {
+				"editor.tabSize": 2,
+				"containers.containerClient": "com.microsoft.visualstudio.containers.docker",
+				"containers.orchestratorClient": "com.microsoft.visualstudio.orchestrators.dockercompose",
+				"containers.commands.runInteractive": "${containerCommand} run --rm -it ${exposedPorts} ${tag}"
+			},
+			"extensions": [
+				"Angular.ng-template",
+				"ms-azuretools.vscode-docker",
+				"ms-azuretools.vscode-containers"
+			]
+		}
 	}
 }

@@ -29,7 +29,8 @@
 		},
 		"extensions": [
 		  "Angular.ng-template",
-		  "ms-azuretools.vscode-docker"
+		  "ms-azuretools.vscode-docker",
+		  "ms-azuretools.vscode-containers"
 		]
 	  }
 	}
