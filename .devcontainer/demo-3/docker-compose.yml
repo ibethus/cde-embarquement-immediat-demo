@@ -1,0 +1,13 @@
+services:
+  devcontainer:
+    image: mcr.microsoft.com/devcontainers/java:1-21-bullseye
+    volumes:
+      - ../..:/workspace:cached
+    command: sleep infinity
+
+  weather-reporter:
+      image: vscode/weather-report-back:latest
+      environment:
+        QUARKUS_HTTP_PORT: 8280
+        QUARKUS_SECURITY_USERS_EMBEDDED_USERS__SPACE-SUIT-BACK__: s3cr3t
+      network_mode: service:devcontainer

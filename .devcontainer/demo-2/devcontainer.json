@@ -1,49 +1,63 @@
 {
 	"name": "2 - Spacesuits dev container",
-	"dockerComposeFile": "docker-compose.yml",
-	"service": "devcontainer",
-	"workspaceFolder": "/workspace",
+	"image": "mcr.microsoft.com/devcontainers/java:1-21-bullseye",
 
 	// Additional features
 	"features": {
+		"ghcr.io/devcontainers-extra/features/maven-sdkman:2": {
+			"version": "3.9.11",
+			"jdkVersion": "21"
+		},
+		"ghcr.io/devcontainers-extra/features/quarkus-sdkman:2": {
+			"version": "3.18.4",
+			"jdkVersion": "21"
+		},
+		"ghcr.io/devcontainers/features/docker-outside-of-docker:1": {},
+		"ghcr.io/devcontainers/features/node:1": {
+			"version": "22"
+		},
 		"ghcr.io/devcontainers-extra/features/angular-cli:2": {
 			"version": "19.2.1"
 		}
 	},
-
+	
 	// Init & config
 	"postCreateCommand": {
-		"InstallDeps": "cd front/spacesuit-status-front && npm i"
+		"Compile backend": "cd backend/space-suit-back && mvn compile",
+		"Install frontend deps": "cd front/spacesuit-status-front && npm i",
+		"chown maven-repo": "sudo chown -R vscode:vscode /home/vscode/.m2",
+		"chown npm-cache": "sudo chown -R vscode:vscode /home/vscode/.npm"
 	},
-	"forwardPorts": [
-		4200,
-		8080,
-		3000
+	
+	"mounts": [
+		{ "source": "maven-repo", "target": "/home/vscode/.m2", "type": "volume" },
+		{ "source": "npm-cache", "target": "/home/vscode/.npm", "type": "volume" }
 	],
+
+	"forwardPorts": [ 8080, 4200 ],
 	"portsAttributes": {
-		"4200": {
-			"label": "Angular",
-			"protocol": "http"
-		},
 		"8080": {
-			"label": "Keycloak",
+			"label": "Quarkus App",
 			"protocol": "http"
 		},
-		"3000": {
-			"label": "Mockoon",
+		"4200": {
+			"label": "Angular App",
 			"protocol": "http"
 		}
 	},
 
 	// IDE customizations
 	"customizations": {
-		"vscode": {
+	  "vscode": {
 			"settings": {
 				"editor.tabSize": 2
 			},
 			"extensions": [
+				"redhat.vscode-quarkus",
+				"ms-azuretools.vscode-docker",
+				"ms-azuretools.vscode-containers",
 				"Angular.ng-template"
 			]
-		}
+	  }
 	}
 }
