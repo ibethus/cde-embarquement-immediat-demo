@@ -12,8 +12,8 @@
 	
 	// Init & config
 	"postCreateCommand": {
-		"Install maven": "sudo apt-get update && sudo apt-get install -y maven && mvn -q -ntp dependency:go-offline",
-		"Install Quarkus CLI": "curl -Ls https://sh.jbang.dev | bash -s - trust add https://repo1.maven.org/maven2/io/quarkus/quarkus-cli/curl -Ls https://sh.jbang.dev | bash -s - app install --fresh --force quarkus@quarkusio",
+		"Install maven": "sudo apt update && sudo apt install maven -y",
+		"Install Quarkus CLI": "curl -Ls https://sh.jbang.dev | bash -s - trust add https://repo1.maven.org/maven2/io/quarkus/quarkus-cli/ && curl -Ls https://sh.jbang.dev | bash -s - app install --fresh --force quarkus@quarkusio",
 		"Compile backend": "cd backend/space-suit-back && mvn compile",
 		"Install frontend deps": "cd front/spacesuit-status-front && npm i"
 	},
